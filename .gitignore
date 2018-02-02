@@ -1,0 +1,16 @@
+/node_modules
+bundle.js
+npm-debug.log
+.DS_Store
+
+# IntelliJ
+*.iml
+/.idea
+
+/dist
+
+config.js
+
+package.json
+package-lock.json
+webpack.config.js
