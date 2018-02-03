@@ -38,8 +38,7 @@ class SignIn extends Component {
           const jwt = localStorage.getItem('jwt');
           const payload = jwtDecode(jwt);
           console.log(payload.full_name);
-          this.props.createUserAction(payload.full_name);
-          this.props.createTokenAction(payload.is_admin);
+          this.props.attachUser(payload.full_name);
         }
       )
       const newState = Object.assign({}, this.state, {
