@@ -4,6 +4,7 @@ import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import jwtDecode from 'jwt-decode';
 import {Token} from '../requests/tokens';
+import {Follow} from '../requests/follows';
 
 class SignIn extends Component {
   constructor(props) {
@@ -22,29 +23,35 @@ class SignIn extends Component {
   }
 
   createToken() {
-    const {onSignIn = () => {}} = this.props;
     const {email, password} = this.state;
     Token
       .create({email, password})
       .then(data => {
         if (!data.error) {
-          const {jwt} = data;
+          let {jwt} = data;
           localStorage.setItem('jwt', jwt);
           //redirect
-          onSignIn();
-        }
-      }).then(
-        () => {
-          const jwt = localStorage.getItem('jwt');
+          jwt = localStorage.getItem('jwt');
           const payload = jwtDecode(jwt);
-          console.log(payload.full_name);
-          this.props.attachUser(payload.full_name);
+          // console.log(payload);
+          this.props.attachUser(payload);
+          const newState = Object.assign({}, this.state, {
+            email: "", password: "",
+          });
+          this.setState(newState, this.loadProfile);
         }
-      )
-      const newState = Object.assign({}, this.state, {
-      email: "", password: "",
-      });
-      this.setState(newState);
+      })
+  }
+
+  loadProfile() {
+    console.log('load profile triggered');
+    const jwt = localStorage.getItem('jwt');
+    const user = jwtDecode(jwt);
+
+    Follow
+      .all()
+      .then(this.props.setFollowedBrands)
+      .then((res) => console.log(res))
   }
 
   render() {
@@ -89,7 +96,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    attachUser: user => dispatch(actions.attachUser(user))
+    attachUser: user => dispatch(actions.attachUser(user)),
+    setFollowedBrands: following => dispatch(actions.setFollowedBrands(following))
   }
 }
 

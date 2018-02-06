@@ -14,8 +14,10 @@ export const Token = {
     )
     .then(res => {
       if (res.status === 200) {
+        console.log('successful login')
         return res.json();
       } else {
+        console.log('wrong login')
         return {error: 'Unauthorized'};
       }
     });

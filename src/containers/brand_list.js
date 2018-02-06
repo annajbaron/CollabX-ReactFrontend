@@ -12,6 +12,7 @@ class BrandList extends Component {
   componentWillMount() {
     axios.get('http://localhost:3000/brands.json')
     .then(res => this.props.getBrands(res.data))
+    // .then(res => console.log(res))
     .catch(error => console.log(error))
   }
 
@@ -44,14 +45,14 @@ class BrandList extends Component {
 
 function mapStateToProps(state) {
   return {
-    brands: state.brands ? state.brands.brands : null,
+    brands: state.brands ? state.brands : null,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     selectBrand: brand => dispatch(actions.selectBrand(brand)),
-    getBrands: brand => dispatch(actions.getBrands(brand))
+    getBrands: brands => dispatch(actions.getBrands(brands))
   }
 }
 
