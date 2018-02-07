@@ -14,18 +14,14 @@ class NavBar extends Component {
   render() {
     const {user} = this.props;
     return (
-      <nav
-        style={{
-          padding: '10px',
-          display: 'flex',
-        }}
-        >
-        <Link style={{marginRight: '20px'}} to="/">Home</Link>
-        <Link to="/brands">Brands</Link>
-        {
-          user ? ([
-            <span
-              key='1'
+      <nav className="nav-bar">
+        <Link to="/"><img src="https://s3.amazonaws.com/collab-x-pictures/logo" alt="" className="badge"/></Link>
+        <div className="menu">
+          <Link to="/brands" className="menu-item">Brands</Link>
+          {
+            user ? ([
+              <span
+                key='1'
               >
                 Hello, {user.first_name}
               </span>,
@@ -33,27 +29,30 @@ class NavBar extends Component {
                 onClick={() => this.handleSignOut(user)}
                 key='2'
                 href="#"
-                >
-                  Sign Out
-                </a>
+                className="menu-item"
+              >
+                Sign Out
+              </a>
               ]) : ([
-                <Link
-                  style={{marginLeft: 'auto', marginRight: '20px'}}
-                  to="/signin"
-                  key='1'
-                  >
-                    Sign In
-                  </Link>,
-                  <Link
-                    style={{marginLeft: 'auto', marginRight: '20px'}}
-                    to="/signup"
-                    key='2'
-                    >
-                      Sign Up
-                    </Link>
-                  ])
-                }
-              </nav>
+              <Link
+                to="/signin"
+                key='1'
+                className="menu-item"
+              >
+                Sign In
+              </Link>,
+              <Link
+                to="/signup"
+                key='2'
+                className="menu-item"
+              >
+                Sign Up
+              </Link>
+            ])
+          }
+        </div>
+
+      </nav>
     );
   }
 }
