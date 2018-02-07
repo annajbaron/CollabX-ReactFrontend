@@ -22,6 +22,7 @@ class NavBar extends Component {
             user ? ([
               <span
                 key='1'
+                className="menu-item"
               >
                 Hello, {user.first_name}
               </span>,

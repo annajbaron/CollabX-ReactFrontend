@@ -23,7 +23,7 @@ class Welcome extends Component {
               <img src="https://s3.amazonaws.com/collab-x-pictures/logoright" className="welcome-img"/>
               <h2
                 onClick={() => this.enter()}
-                className="welcome-text"
+                className="welcome-text font-effect-anaglyph"
               >ENTER</h2>
             </div>
           )
