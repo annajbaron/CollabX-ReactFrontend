@@ -53,24 +53,32 @@ class SignIn extends Component {
   render() {
     return(
       <div className="sign-in">
+        <p>SIGN IN</p>
         <form>
-          <label>Email</label>
-          <input
-            type="text"
-            className="form-control input_email"
-            name="email"
-            placeholder="E-MAIL"
-            onInput={this.handleChange.bind(this)}
-            value={this.state.email}
-          />
-          <input
-            type="password"
-            className="form-control input_password"
-            name="password"
-            onInput={this.handleChange.bind(this)}
-            value={this.state.password}
-            placeholder="PASSWORD"
-          />
+          <div className="form-group row">
+            <div className="col-sm-12">
+              <input
+                type="text"
+                className="form-control input_email"
+                name="email"
+                placeholder="E-MAIL"
+                onInput={this.handleChange.bind(this)}
+                value={this.state.email}
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <div className="col-sm-12">
+              <input
+                type="password"
+                className="form-control input_password"
+                name="password"
+                onInput={this.handleChange.bind(this)}
+                value={this.state.password}
+                placeholder="PASSWORD"
+              />
+            </div>
+          </div>
           <button
             type="button"
             className="form-submit btn btn-primary"

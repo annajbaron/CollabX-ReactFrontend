@@ -19,3 +19,6 @@ createAction(Types.ADD_FOLLOWED_BRANDS, { payload })
 
 export const removeFollowedBrands = payload =>
 createAction(Types.REMOVE_FOLLOWED_BRANDS, { payload })
+
+export const createUser = payload =>
+createAction(Types.CREATE_USER, { payload })

@@ -4,7 +4,12 @@ export default function (state = null, action) {
       return {
         ...state,
         user: action.payload
-      }
+      };
+    case 'CREATE_USER':
+      return {
+        ...state,
+        user: action.payload
+      };
   }
   return state;
 }
