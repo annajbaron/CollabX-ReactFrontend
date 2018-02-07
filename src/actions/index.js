@@ -25,3 +25,6 @@ createAction(Types.CREATE_USER, { payload })
 
 export const detachUser = payload =>
 createAction(Types.DETACH_USER, { payload })
+
+export const enterSite = payload =>
+createAction(Types.ENTER_SITE, { payload: status })

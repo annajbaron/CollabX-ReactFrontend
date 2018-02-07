@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: gainsboro;
+  background-color: white;
 }
 
 .nav-bar {
@@ -52,4 +52,39 @@ body {
 
 .badge {
   max-height: 5vh;
+}
+
+.welcome {
+  background-color: gainsboro;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+}
+
+.welcome-img {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+.welcome-text {
+  color: blue;
+  text-shadow: 3px 2px black;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  z-index: 9999;
+}
+
+.welcome-text:hover {
+  color: red;
 }

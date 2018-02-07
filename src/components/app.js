@@ -5,6 +5,7 @@ import BrandDetail from '../containers/brand_detail';
 import SignIn from '../containers/sign_in';
 import SignUp from '../containers/sign_up';
 import NavBar from '../containers/nav_bar';
+import Welcome from '../containers/welcome';
 import {
   BrowserRouter as Router,
   Route,
@@ -13,10 +14,15 @@ import {
 
 export default class App extends Component {
 
+componentDidMount() {
+  console.log('hello');
+}
+
   render() {
     return (
       <Router>
         <div>
+          <Welcome />
           <NavBar />
           <Switch>
             <Route path="/signup">
