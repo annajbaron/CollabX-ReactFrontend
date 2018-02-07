@@ -4,10 +4,9 @@ export default function (state = [], action) {
       return state.concat([action.payload]);
     case 'SET_FOLLOWED_BRANDS':
       return action.payload;
-    case 'REMOVE_FOLLOWED_BRANDS':
-      return {
-        ...state
-      }
+    case 'REMOVE_FOLLOWED_BRANDS': {
+      return state.filter(follow => (follow.id !== action.payload.id));
+    }
   }
   return state;
 }

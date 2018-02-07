@@ -9,8 +9,6 @@ function getUser () {
   return jwtDecode(`${localStorage.getItem('jwt')}`)
 }
 
-
-
 // HTTP REQUESTS
 export const Follow = {
   all () {
@@ -26,10 +24,6 @@ export const Follow = {
   },
   create (brand) {
     const {id} = getUser()
-    console.log('from request');
-    console.log(id);
-    console.log(brand);
-    console.log('OVER');
     return fetch(
       `${BASE_URL}/brands/${brand.id}/follows`,
       {
@@ -44,8 +38,6 @@ export const Follow = {
     .then(res => res.json())
   },
   destroy (followId) {
-    // const {id} = getUser()
-    console.log(followId.id);
     return fetch(
       `${BASE_URL}/follows/${followId.id}`,
       {
@@ -56,7 +48,7 @@ export const Follow = {
         }
       }
     )
-    .then(res => res.json())
+    .then(res => res)
   }
 
 }

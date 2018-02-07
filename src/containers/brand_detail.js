@@ -9,18 +9,17 @@ class BrandDetail extends Component {
   addFollow(brand) {
     Follow
       .create(brand)
-      .then((res) => {console.log(res)})
-      .then(this.props.addFollowedBrands);
-      // .then(this.props.setFollowedBrands);
-      this.props.setFollowedBrands;
+      .then((res) => {
+        this.props.addFollowedBrands(res);
+      })
   }
 
   removeFollow(followId) {
     Follow
       .destroy(followId)
-      .then((res) => {console.log(res)})
-      .then(this.props.removeFollowedBrands)
-      .then(this.props.setFollowedBrands);
+      .then((res) => {
+        this.props.removeFollowedBrands(followId);
+      })
   }
 
 
@@ -31,21 +30,9 @@ class BrandDetail extends Component {
         <div>Select a brand.</div>
       )
     }
-    console.log('>>>>>>>>>>>>>');
-    console.log(followedBrands);
-    console.log('>>>>>>>>>>>>>');
     const targetFollow = followedBrands.find(function(follow) {
-      console.log("follow below");
-      console.log(follow);
-      console.log('brand.id', brand.id);
       return follow.brand_id == brand.id;
     });
-
-    console.log('TARGET BELOW');
-    console.log(targetFollow);
-
-      console.log('brand BELOW');
-      console.log(brand);
       return(
         <div className="brand-detail">
           <h3>Details for:</h3>
@@ -82,8 +69,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addFollowedBrands: newFollow => dispatch(actions.addFollowedBrands(newFollow)),
-    removeFollowedBrands: removeFollow => dispatch(actions.removeFollowedBrands(removeFollow)),
-    setFollowedBrands: following => dispatch(actions.setFollowedBrands(following))
+    removeFollowedBrands: removeFollow => dispatch(actions.removeFollowedBrands(removeFollow))
   }
 }
 

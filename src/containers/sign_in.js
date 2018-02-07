@@ -30,10 +30,8 @@ class SignIn extends Component {
         if (!data.error) {
           let {jwt} = data;
           localStorage.setItem('jwt', jwt);
-          //redirect
           jwt = localStorage.getItem('jwt');
           const payload = jwtDecode(jwt);
-          // console.log(payload);
           this.props.attachUser(payload);
           const newState = Object.assign({}, this.state, {
             email: "", password: "",
@@ -44,14 +42,12 @@ class SignIn extends Component {
   }
 
   loadProfile() {
-    console.log('load profile triggered');
     const jwt = localStorage.getItem('jwt');
     const user = jwtDecode(jwt);
 
     Follow
       .all()
-      .then(this.props.setFollowedBrands)
-      .then((res) => console.log(res))
+      .then(this.props.setFollowedBrands);
   }
 
   render() {
