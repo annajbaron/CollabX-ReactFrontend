@@ -6,6 +6,7 @@ import SignIn from '../containers/sign_in';
 import SignUp from '../containers/sign_up';
 import NavBar from '../containers/nav_bar';
 import Welcome from '../containers/welcome';
+import CollectionList from '../containers/collection_list';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
@@ -39,6 +40,9 @@ componentDidMount() {
           <Welcome />
           <NavBar />
           <Switch>
+            <Route path="/">
+              <div><CollectionList /></div>
+            </Route>
             <Route path="/signup">
               <div><SignUp /></div>
             </Route>

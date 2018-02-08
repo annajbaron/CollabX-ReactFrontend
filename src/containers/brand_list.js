@@ -9,7 +9,7 @@ class BrandList extends Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     axios.get('http://localhost:3000/brands.json')
     .then(res => this.props.getBrands(res.data))
     .catch(error => console.log(error))

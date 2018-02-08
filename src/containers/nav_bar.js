@@ -17,7 +17,7 @@ class NavBar extends Component {
       <nav className="nav-bar">
         <Link to="/"><img src="https://s3.amazonaws.com/collab-x-pictures/logo" alt="" className="badge"/></Link>
         <div className="menu">
-          <Link to="/brands" className="menu-item">Brands</Link>
+          <Link to="/brands" className="menu-item">BRANDS</Link>
           {
             user ? ([
               <span
@@ -32,22 +32,23 @@ class NavBar extends Component {
                 href="#"
                 className="menu-item"
               >
-                Sign Out
+                SIGN OUT
               </a>
               ]) : ([
               <Link
                 to="/signin"
                 key='1'
                 className="menu-item"
+
               >
-                Sign In
+                SIGN IN
               </Link>,
               <Link
                 to="/signup"
                 key='2'
                 className="menu-item"
               >
-                Sign Up
+                SIGN UP
               </Link>
             ])
           }

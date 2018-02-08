@@ -54,7 +54,7 @@ body {
 }
 
 .welcome {
-  background-color: gainsboro;
+  background-color: black;
   position: absolute;
   top: 0;
   left: 0;
@@ -74,6 +74,7 @@ body {
 
 
 .welcome-text {
+  background-color: black;
   color: black;
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
@@ -82,13 +83,13 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120px;
+  width: 140px;
   height: 35px;
   margin-top: -17.5px;
-  margin-left: -60px;
-  z-index: 9999;
+  margin-left: -70px;
 }
 
 .welcome-text:hover {
-  /* color: red; */
+  color: white;
+
 }
