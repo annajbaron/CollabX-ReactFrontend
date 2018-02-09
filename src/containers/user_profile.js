@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Collection} from '../requests/collections';
+import WrappedContainer from './map';
 
 class UserProfile extends Component {
 
@@ -23,7 +24,6 @@ class UserProfile extends Component {
     const {user, followedBrands} = this.props;
     return(
       <div>
-        
         USER PROFILE
         { followedBrands.map((follow) => {
           return (
@@ -36,6 +36,7 @@ class UserProfile extends Component {
             )
           })
         }
+      <WrappedContainer />
       </div>
     )
 }
@@ -50,7 +51,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // getCollections: collections => dispatch(actions.getCollections(collections))
+    
   }
 }
 

@@ -40,13 +40,11 @@ class BrandDetail extends Component {
           <div>HQ: {this.props.brand.hq}</div>
           { followedBrands.map(follow => follow.brand_id).includes(brand.id) ?
             <button
-              brand={this.props.brand}
               onClick={() => this.removeFollow(targetFollow)}
               > Over it -
             </button>
             :
             <button
-              brand={this.props.brand}
               onClick={() => this.addFollow(brand)}
               > Add to Rotation +
             </button>
