@@ -20,12 +20,13 @@ class NavBar extends Component {
           <Link to="/brands" className="menu-item">BRANDS</Link>
           {
             user ? ([
-              <span
+              <Link
+                to="/profile"
                 key='1'
                 className="menu-item"
               >
-                Hello, {user.first_name}
-              </span>,
+                  Hello, {user.first_name}
+              </Link>,
               <a
                 onClick={() => this.handleSignOut(user)}
                 key='2'
@@ -36,7 +37,7 @@ class NavBar extends Component {
               </a>
               ]) : ([
               <Link
-                to="/signin"
+                to="/sign_in"
                 key='1'
                 className="menu-item"
 
@@ -44,7 +45,7 @@ class NavBar extends Component {
                 SIGN IN
               </Link>,
               <Link
-                to="/signup"
+                to="/sign_up"
                 key='2'
                 className="menu-item"
               >

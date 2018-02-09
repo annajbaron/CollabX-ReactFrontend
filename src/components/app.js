@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import jwtDecode from 'jwt-decode';
-import BrandList from '../containers/brand_list';
-import BrandDetail from '../containers/brand_detail';
+import BrandPage from '../containers/brand_page';
 import SignIn from '../containers/sign_in';
 import SignUp from '../containers/sign_up';
 import NavBar from '../containers/nav_bar';
@@ -11,6 +10,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Follow} from '../requests/follows';
+import AuthRoute from '../containers/auth_route';
+import UserProfile from '../containers/user_profile';
 
 import {
   BrowserRouter as Router,
@@ -33,6 +34,10 @@ componentDidMount() {
   }
 }
 
+isAuth () {
+  return !!this.props.user
+}
+
   render() {
     return (
       <Router>
@@ -40,21 +45,27 @@ componentDidMount() {
           <Welcome />
           <NavBar />
           <Switch>
-            <Route path="/">
+            <Route path="/" exact>
               <div><CollectionList /></div>
             </Route>
-            <Route path="/signup">
+            <Route path="/sign_up">
               <div><SignUp /></div>
             </Route>
-            <Route path="/signin">
+            <Route path="/sign_in">
               <div><SignIn /></div>
             </Route>
-            <Route path="/brands">
-              <div>
-                <BrandList />
-                <BrandDetail />
-              </div>
-            </Route>
+            <AuthRoute
+              isAuthenticated={this.isAuth()}
+              path="/brands"
+              exact
+              component={BrandPage}
+            />
+            <AuthRoute
+              isAuthenticated={this.isAuth()}
+              path="/profile"
+              exact
+              component={UserProfile}
+            />
           </Switch>
         </div>
       </Router>

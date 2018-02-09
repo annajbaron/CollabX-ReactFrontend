@@ -4,7 +4,6 @@ import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Follow} from '../requests/follows';
 
-
 class BrandDetail extends Component {
   addFollow(brand) {
     Follow
@@ -52,8 +51,7 @@ class BrandDetail extends Component {
               > Add to Rotation +
             </button>
           }
-
-          </div>
+        </div>
       );
 
   }
