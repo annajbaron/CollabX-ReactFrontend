@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 
-function AuthRoute (props) {
+function AntiAuthRoute (props) {
   const {
     component: Component,
     isAuthenticated = false,
@@ -15,7 +15,7 @@ function AuthRoute (props) {
           if (isAuthenticated) {
             return <Component {...props} history={props.history}/>
           } else {
-            return <Redirect to={{pathname: "/sign_in"}} />
+            return <Redirect to={{pathname: "/"}} />
           }
         }
       }
@@ -23,4 +23,4 @@ function AuthRoute (props) {
   )
 }
 
-export default AuthRoute;
+export default AntiAuthRoute;

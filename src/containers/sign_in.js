@@ -39,7 +39,7 @@ class SignIn extends Component {
           });
           this.setState(newState, this.loadProfile);
         }
-      })
+      });
   }
 
   loadProfile() {
@@ -52,6 +52,7 @@ class SignIn extends Component {
     Like
       .all()
       .then(this.props.setLikedCollections);
+    this.props.history.push('/');
   }
 
   render() {

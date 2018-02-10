@@ -6,12 +6,14 @@ import SignUp from '../containers/sign_up';
 import NavBar from '../containers/nav_bar';
 import Welcome from '../containers/welcome';
 import CollectionList from '../containers/collection_list';
-import CollectionDetail from '../containers/collection_detail'
+import CollectionDetail from '../containers/collection_detail';
+import CollectionPage from '../containers/collection_page';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Follow} from '../requests/follows';
 import AuthRoute from '../containers/auth_route';
+import AntiAuthRoute from '../containers/anti_auth_route';
 import UserProfile from '../containers/user_profile';
 
 import {
@@ -55,9 +57,19 @@ isAuth () {
             <Route path="/sign_up">
               <div><SignUp /></div>
             </Route>
-            <Route path="/sign_in">
-              <div><SignIn /></div>
-            </Route>
+
+            <Route
+              path="/sign_in"
+              render={props => {
+                return <AntiAuthRoute
+                        isAuthenticated={this.isAuth()}
+                        path='/'
+                        component={CollectionPage}
+
+                      />
+              }}
+              isAuthenticated={!this.isAuth()}
+            />
             <AuthRoute
               isAuthenticated={this.isAuth()}
               path="/brands"
