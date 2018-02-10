@@ -4,6 +4,7 @@ import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Collection} from '../requests/collections';
 
+
 class CollectionList extends Component {
   componentDidMount() {
     Collection
@@ -18,6 +19,7 @@ class CollectionList extends Component {
       return (
         <li
           key={collection.name}
+          onClick={() => this.props.selectCollection(collection)}
           className="list-group-item"
           >
             {collection.name}
@@ -27,7 +29,8 @@ class CollectionList extends Component {
   }
 
   render() {
-    if (this.props.collections){
+    const {collections} = this.props;
+    if (collections){
       return(
         <ul className="list-group col-sm-4">
           {this.renderList()}
@@ -35,19 +38,19 @@ class CollectionList extends Component {
       )} else {
         return <div/>;
       }
-
   }
 }
 
 function mapStateToProps(state) {
   return {
-    collections: state.collections
+    collections: state.collections ? state.collections : null
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getCollections: collections => dispatch(actions.getCollections(collections))
+    getCollections: collections => dispatch(actions.getCollections(collections)),
+    selectCollection: collection => dispatch(actions.selectCollection(collection))
   }
 }
 

@@ -6,6 +6,7 @@ import SignUp from '../containers/sign_up';
 import NavBar from '../containers/nav_bar';
 import Welcome from '../containers/welcome';
 import CollectionList from '../containers/collection_list';
+import CollectionDetail from '../containers/collection_detail'
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
@@ -46,7 +47,10 @@ isAuth () {
           <NavBar />
           <Switch>
             <Route path="/" exact>
-              <div><CollectionList /></div>
+              <div>
+                <CollectionList />
+                <CollectionDetail />
+              </div>
             </Route>
             <Route path="/sign_up">
               <div><SignUp /></div>

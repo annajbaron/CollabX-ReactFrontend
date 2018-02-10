@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import jwtDecode from 'jwt-decode';
 import {Token} from '../requests/tokens';
 import {Follow} from '../requests/follows';
+import {Like} from '../requests/likes';
 
 class SignIn extends Component {
   constructor(props) {
@@ -48,6 +49,9 @@ class SignIn extends Component {
     Follow
       .all()
       .then(this.props.setFollowedBrands);
+    Like
+      .all()
+      .then(this.props.setLikedCollections);
   }
 
   render() {
@@ -101,7 +105,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     attachUser: user => dispatch(actions.attachUser(user)),
-    setFollowedBrands: following => dispatch(actions.setFollowedBrands(following))
+    setFollowedBrands: following => dispatch(actions.setFollowedBrands(following)),
+    setLikedCollections: liked => dispatch(actions.setLikedCollections(liked))
   }
 }
 

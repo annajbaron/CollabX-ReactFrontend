@@ -31,3 +31,15 @@ createAction(Types.ENTER_SITE, { payload: status })
 
 export const getCollections = payload =>
 createAction(Types.GET_COLLECTIONS, { payload })
+
+export const setLikedCollections = payload =>
+createAction(Types.SET_LIKED_COLLECTIONS, { payload })
+
+export const addLikedCollections = payload =>
+createAction(Types.ADD_LIKED_COLLECTIONS, { payload })
+
+export const removeLikedCollections = payload =>
+createAction(Types.REMOVE_LIKED_COLLECTIONS, { payload })
+
+export const selectCollection = payload =>
+createAction(Types.COLLECTION_SELECTED, { payload })
