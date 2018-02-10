@@ -8,7 +8,7 @@ class MapContainer extends Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {},
+      selectedPlace: {}
     }
     this.onMarkerClick = this.onMarkerClick.bind(this);
   }
@@ -74,7 +74,7 @@ class MapContainer extends Component {
 
 
 const WrappedContainer = (GoogleApiWrapper({
-    apiKey: "AIzaSyB3KaI6wxCsWTZiByA-8aoX4eNcx_YnAnA"
+    apiKey: "AIzaSyCarduSs9YHy2Vafczyy9Ctq13h_EBHbhs"
   })(MapContainer))
 
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedContainer);
