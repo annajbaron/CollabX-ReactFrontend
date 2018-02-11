@@ -28,6 +28,11 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.nav-item {
+  list-style: none !important;
+  list-style-type: none !important;
+}
+
 .menu-item:before {
   content: "" !important;
   position: absolute !important;
@@ -90,6 +95,5 @@ body {
 }
 
 .welcome-text:hover {
-  color: white;
-
+  color: white
 }

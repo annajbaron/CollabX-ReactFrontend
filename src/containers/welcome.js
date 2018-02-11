@@ -6,8 +6,6 @@ import { bindActionCreators } from 'redux';
 class Welcome extends Component {
 
   enter(){
-    // console.log('enter clicked');
-
     this.props.enterSite();
   }
 

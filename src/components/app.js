@@ -45,7 +45,11 @@ isAuth () {
     return (
       <Router>
         <div>
-          <Welcome />
+          { this.props.site ?
+            <div></div>
+            :
+            <Welcome />
+          }
           <NavBar />
           <Switch>
             <Route path="/" exact>
@@ -62,13 +66,11 @@ isAuth () {
               path="/sign_in"
               render={props => {
                 return <AntiAuthRoute
-                        isAuthenticated={this.isAuth()}
-                        path='/'
-                        component={CollectionPage}
-
+                        isAuthenticated={!this.isAuth()}
+                        path='/sign_in'
+                        component={SignIn}
                       />
               }}
-              isAuthenticated={!this.isAuth()}
             />
             <AuthRoute
               isAuthenticated={this.isAuth()}
@@ -91,7 +93,8 @@ isAuth () {
 
 function mapStateToProps(state) {
   return {
-    user: state.user ? state.user : null
+    user: state.user ? state.user : null,
+    site: state.site
   };
 }
 

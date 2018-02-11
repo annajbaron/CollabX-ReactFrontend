@@ -34,7 +34,7 @@ class BrandList extends Component {
     const refinedBrands = this.props.brands.filter(brand => brand.name.toLowerCase().includes(this.state.searchValue));
 
     return refinedBrands.map((brand) => {
-      const logo = brand.name.split(' ').join('').toLowerCase();
+      const logo = brand.name.replace( /\s/g, "").toLowerCase();
           return (
             <div
               key={brand.name}
@@ -43,8 +43,8 @@ class BrandList extends Component {
               style={{
                 background: `url(https://s3.amazonaws.com/collab-x-pictures/${logo}) center`,
                 backgroundSize: 'cover',
-                width: '200px',
-                height: '200px'
+                width: '150px',
+                height: '150px'
               }}
             >
             </div>
@@ -74,10 +74,10 @@ class BrandList extends Component {
         </form>
         { brands ?
           <div
-            className="wrapper"
+            className="brand-wrapper"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)'
+              gridTemplateColumns: 'repeat(5, 1fr)'
             }}
           >
               {this.renderList()}

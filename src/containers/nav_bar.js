@@ -3,6 +3,19 @@ import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
+// import { CSSTransitionGroup } from 'react-transition-group';
 
 class NavBar extends Component {
 
@@ -14,48 +27,61 @@ class NavBar extends Component {
   render() {
     const {user} = this.props;
     return (
-      <nav className="nav-bar">
-        <Link to="/"><img src="https://s3.amazonaws.com/collab-x-pictures/logo" alt="" className="badge"/></Link>
-        <div className="menu">
-          <Link to="/brands" className="menu-item">BRANDS</Link>
-          {
-            user ? ([
-              <Link
-                to="/profile"
-                key='1'
-                className="menu-item"
-              >
-                  Hello, {user.first_name}
-              </Link>,
-              <a
-                onClick={() => this.handleSignOut(user)}
-                key='2'
-                href="#"
-                className="menu-item"
-              >
-                SIGN OUT
-              </a>
-              ]) : ([
-              <Link
-                to="/sign_in"
-                key='1'
-                className="menu-item"
+      <div>
+      <Navbar>
+        <NavbarBrand to="/"><img src="https://s3.amazonaws.com/collab-x-pictures/logo" alt="" className="badge"/></NavbarBrand>
+        <Nav navbar>
+          <NavItem className="nav-item">
+            <NavLink tag={Link} to="/brands" className="menu-item">BRANDS</NavLink>
+          </NavItem>
+            {
+              user ?
+              <div>
+                <NavItem className="nav-item">
+                  <NavLink
+                    tag={Link}
+                    to="/profile"
+                    className="menu-item"
+                  >
+                      Hello, {user.first_name}
+                  </NavLink>
+                </NavItem>
+                <NavItem className="nav-item">
+                  <NavLink
+                    onClick={() => this.handleSignOut(user)}
+                    to="#"
+                    className="menu-item"
+                  >
+                    SIGN OUT
+                  </NavLink>
+                </NavItem>
+              </div>
+                 :
+              <div>
+                <NavItem className="nav-item">
+                  <NavLink
+                    tag={Link}
+                    to="/sign_in"
+                    className="menu-item"
 
-              >
-                SIGN IN
-              </Link>,
-              <Link
-                to="/sign_up"
-                key='2'
-                className="menu-item"
-              >
-                SIGN UP
-              </Link>
-            ])
-          }
-        </div>
-
-      </nav>
+                  >
+                    SIGN IN
+                  </NavLink>
+                </NavItem>
+                <NavItem className="nav-item">
+                  <NavLink
+                    tag={Link}
+                    to="/sign_up"
+                    className="menu-item"
+                  >
+                    SIGN UP
+                  </NavLink>
+                </NavItem>
+              </div>
+            }
+        </Nav>
+      </Navbar>
+    </div>
     );
   }
 }
