@@ -15,7 +15,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
-// import { CSSTransitionGroup } from 'react-transition-group';
 
 class NavBar extends Component {
 
@@ -28,56 +27,56 @@ class NavBar extends Component {
     const {user} = this.props;
     return (
       <div>
-      <Navbar>
-        <NavbarBrand to="/"><img src="https://s3.amazonaws.com/collab-x-pictures/logo" alt="" className="badge"/></NavbarBrand>
-        <Nav navbar>
+      <Navbar className="nav-bar">
+        <Nav navbar className="menu">
           <NavItem className="nav-item">
-            <NavLink tag={Link} to="/brands" className="menu-item">BRANDS</NavLink>
+            <NavLink tag={Link} to="/" className="font-effect-anaglyph"><img src="https://s3.amazonaws.com/collab-x-pictures/logo" alt="" className="badge"/></NavLink>
+          </NavItem>
+          <NavItem className="nav-item">
+            <NavLink tag={Link} to="/brands" className="menu-item font-effect-anaglyph">brands</NavLink>
           </NavItem>
             {
-              user ?
-              <div>
+              user ? ([
                 <NavItem className="nav-item">
                   <NavLink
                     tag={Link}
                     to="/profile"
-                    className="menu-item"
+                    className="menu-item font-effect-anaglyph"
                   >
-                      Hello, {user.first_name}
+                    hello, {user.first_name}
                   </NavLink>
-                </NavItem>
+                </NavItem>,
                 <NavItem className="nav-item">
                   <NavLink
                     onClick={() => this.handleSignOut(user)}
                     to="#"
-                    className="menu-item"
+                    className="menu-item font-effect-anaglyph"
                   >
-                    SIGN OUT
+                    sign out
                   </NavLink>
                 </NavItem>
-              </div>
+              ])
                  :
-              <div>
+              ([
                 <NavItem className="nav-item">
                   <NavLink
                     tag={Link}
                     to="/sign_in"
-                    className="menu-item"
-
+                    className="menu-item font-effect-anaglyph"
                   >
-                    SIGN IN
+                    sign in
                   </NavLink>
-                </NavItem>
+                </NavItem>,
                 <NavItem className="nav-item">
                   <NavLink
                     tag={Link}
                     to="/sign_up"
-                    className="menu-item"
+                    className="menu-item font-effect-anaglyph"
                   >
-                    SIGN UP
+                    sign up
                   </NavLink>
                 </NavItem>
-              </div>
+              ])
             }
         </Nav>
       </Navbar>

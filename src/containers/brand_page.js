@@ -5,8 +5,8 @@ import BrandDetail from './brand_detail';
 function BrandPage (props) {
   return (
     <div>
-      <BrandList />
       <BrandDetail />
+      <BrandList />
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Brand} from '../requests/brands';
+import { Form, FormGroup, Input } from 'reactstrap';
 
 class BrandList extends Component {
   constructor(props) {
@@ -26,7 +27,6 @@ class BrandList extends Component {
       [event.target.name]: event.target.value,
     });
     this.setState(newState);
-    console.log(this.state);
     this.props.getBrands();
   }
 
@@ -43,8 +43,8 @@ class BrandList extends Component {
               style={{
                 background: `url(https://s3.amazonaws.com/collab-x-pictures/${logo}) center`,
                 backgroundSize: 'cover',
-                width: '150px',
-                height: '150px'
+                minWidth: '150px',
+                minHeight: '150px'
               }}
             >
             </div>
@@ -55,23 +55,21 @@ class BrandList extends Component {
 
   render() {
     const {brands} = this.props;
-    // console.log(logo);
     return (
       <div>
-        <form className="searchbar">
-          <div className="form-group row">
-            <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-              <input
+        <Form>
+          <FormGroup>
+              <Input
                 type="text"
                 name="searchValue"
                 className="form-control"
-                placeholder="Search..."
+                size='sm'
+                placeholder="Search ..."
                 value={this.state.searchValue}
                 onInput={this.handleChange.bind(this)}
               />
-            </div>
-          </div>
-        </form>
+          </FormGroup>
+        </Form>
         { brands ?
           <div
             className="brand-wrapper"

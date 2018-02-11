@@ -68,7 +68,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addLikedCollections: newLike => dispatch(actions.addLikedCollections(newLike)),
+    addLikedCollections: addLike => dispatch(actions.addLikedCollections(addLike)),
     removeLikedCollections: removeLike => dispatch(actions.removeLikedCollections(removeLike))
   }
 }
