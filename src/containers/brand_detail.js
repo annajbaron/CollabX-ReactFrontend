@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Follow} from '../requests/follows';
+import { Button } from 'reactstrap';
 
 class BrandDetail extends Component {
   addFollow(brand) {
@@ -26,29 +27,38 @@ class BrandDetail extends Component {
     const { brand, followedBrands } = this.props;
     if (!this.props.brand) {
       return(
-        <div>Select a brand.</div>
+        <div></div>
       )
     }
     const targetFollow = followedBrands.find(function(follow) {
       return follow.brand_id == brand.id;
     });
       return(
-        <div className="brand-detail">
-          <h3>Details for:</h3>
-          <div>{this.props.brand.name}</div>
-          <div>Founded in {this.props.brand.founded}</div>
-          <div>HQ: {this.props.brand.hq}</div>
-          { followedBrands.map(follow => follow.brand_id).includes(brand.id) ?
-            <button
-              onClick={() => this.removeFollow(targetFollow)}
-              > Over it -
-            </button>
-            :
-            <button
-              onClick={() => this.addFollow(brand)}
-              > Add to Rotation +
-            </button>
-          }
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="exampleModal3Label">
+              {brand.name}
+              <Button className="close" onClick={() => this.props.exitBrand(false)}>
+                &times;
+              </Button>
+            </h5>
+          </div>
+          <div className="modal-body">
+            ...
+          </div>
+          <div className="modal-footer">
+            { followedBrands.map(follow => follow.brand_id).includes(brand.id) ?
+              <Button
+                onClick={() => this.removeFollow(targetFollow)}
+                > Over it -
+              </Button>
+              :
+              <Button
+                onClick={() => this.addFollow(brand)}
+                > Add to Rotation +
+              </Button>
+            }
+          </div>
         </div>
       );
 
@@ -65,7 +75,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addFollowedBrands: newFollow => dispatch(actions.addFollowedBrands(newFollow)),
-    removeFollowedBrands: removeFollow => dispatch(actions.removeFollowedBrands(removeFollow))
+    removeFollowedBrands: removeFollow => dispatch(actions.removeFollowedBrands(removeFollow)),
+    exitBrand: status => dispatch(actions.exitBrand(status))
   }
 }
 

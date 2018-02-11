@@ -43,3 +43,6 @@ createAction(Types.REMOVE_LIKED_COLLECTIONS, { payload })
 
 export const selectCollection = payload =>
 createAction(Types.COLLECTION_SELECTED, { payload })
+
+export const exitBrand = payload =>
+createAction(Types.EXIT_BRAND, { payload: status })

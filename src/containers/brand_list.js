@@ -43,8 +43,8 @@ class BrandList extends Component {
               style={{
                 background: `url(https://s3.amazonaws.com/collab-x-pictures/${logo}) center`,
                 backgroundSize: 'cover',
-                minWidth: '150px',
-                minHeight: '150px'
+                width: '150px',
+                height: '150px'
               }}
             >
             </div>
@@ -81,7 +81,7 @@ class BrandList extends Component {
               {this.renderList()}
           </div>
           :
-            <div/>
+          <div/>
         }
       </div>
     )
