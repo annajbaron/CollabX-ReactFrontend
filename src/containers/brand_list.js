@@ -32,22 +32,30 @@ class BrandList extends Component {
 
   renderList() {
     const refinedBrands = this.props.brands.filter(brand => brand.name.toLowerCase().includes(this.state.searchValue));
+
     return refinedBrands.map((brand) => {
-      return (
-        <li
-          key={brand.name}
-          onClick={() => this.props.selectBrand(brand)}
-          className="list-group-item"
-          >
-            {brand.name}
-          </li>
-      );
-    });
+      const logo = brand.name.split(' ').join('').toLowerCase();
+          return (
+            <div
+              key={brand.name}
+              onClick={() => this.props.selectBrand(brand)}
+              className=""
+              style={{
+                background: `url(https://s3.amazonaws.com/collab-x-pictures/${logo}) center`,
+                backgroundSize: 'cover',
+                width: '200px',
+                height: '200px'
+              }}
+            >
+            </div>
+          )
+          })
+
   }
 
   render() {
     const {brands} = this.props;
-
+    // console.log(logo);
     return (
       <div>
         <form className="searchbar">
@@ -65,9 +73,15 @@ class BrandList extends Component {
           </div>
         </form>
         { brands ?
-            <ul className="list-group col-sm-4">
+          <div
+            className="wrapper"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)'
+            }}
+          >
               {this.renderList()}
-            </ul>
+          </div>
           :
             <div/>
         }
