@@ -27,14 +27,14 @@ class BrandDetail extends Component {
     const { brand, followedBrands } = this.props;
     if (!this.props.brand) {
       return(
-        <div></div>
+        null
       )
     }
     const targetFollow = followedBrands.find(function(follow) {
       return follow.brand_id == brand.id;
     });
       return(
-        <div className="modal-content">
+        <div className="modal-content modal-fade">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModal3Label">
               {brand.name}
@@ -44,9 +44,20 @@ class BrandDetail extends Component {
             </h5>
           </div>
           <div className="modal-body">
-            ...
-          </div>
-          <div className="modal-footer">
+            { !brand.hq ?
+              <div>Artist</div>
+              :
+              <div>
+                {brand.hq}<br />
+              </div>
+            }
+            { !brand.founded ?
+              <div>Creations ongoing...</div>
+              :
+              <div>
+                Est. {brand.founded}
+              </div>
+            }
             { followedBrands.map(follow => follow.brand_id).includes(brand.id) ?
               <Button
                 onClick={() => this.removeFollow(targetFollow)}
