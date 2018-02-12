@@ -5,6 +5,10 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+.container {
+  justify-content: center;
+}
+
 .nav-bar {
   /* margin: 15px 20px; */
   display: flex !important;
@@ -100,8 +104,29 @@ body {
 }
 
 .brand-wrapper {
-  width: 65vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 175px 175px 175px 175px 175px;
+  grid-gap: 5px;
+  margin: 0 auto;
 }
+
+.grid-item:hover .brand-detail {
+    display:block;
+}
+
+.brand-detail {
+  display: none;
+  background-color: black;
+  opacity: 0.85;
+  color: white;
+  height: 175px;
+  width: 175px;
+  text-align: center;
+  padding: 70px 0;
+  font-family: 'Montserrat Subrayada', sans-serif;
+}
+
 
 .brand-modal {
   z-index: 99999 !important;
