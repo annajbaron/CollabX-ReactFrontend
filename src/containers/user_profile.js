@@ -23,19 +23,20 @@ class UserProfile extends Component {
   render() {
     const {user, followedBrands} = this.props;
     return(
-      <div>
-        USER PROFILE
+      <div className="user-profile">
+        <h1 className="page-header">PROFILE</h1>
         { followedBrands.map((follow) => {
           return (
             <li
-              key={follow.brand_name}
+              key={follow.brand.name}
               className="list-group-item"
               >
-                {follow.brand_name}
+                {follow.brand.name}
               </li>
             )
           })
         }
+        <h5 className="map-title">Visit your brands below:</h5>
       <WrappedContainer />
       </div>
     )
@@ -51,7 +52,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    
+
   }
 }
 

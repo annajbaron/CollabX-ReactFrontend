@@ -31,6 +31,9 @@ class NavBar extends Component {
       <Navbar className="nav-bar">
         <Nav className="menu">
           <NavItem className="nav-item">
+            <NavLink tag={Link} to="/" className="menu-item">collabs</NavLink>
+          </NavItem>
+          <NavItem className="nav-item">
             <NavLink tag={Link} to="/brands" className="menu-item">brands</NavLink>
           </NavItem>
             {

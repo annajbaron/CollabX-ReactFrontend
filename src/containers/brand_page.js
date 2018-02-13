@@ -61,7 +61,7 @@ class BrandPage extends Component {
     const {brands} = this.props;
     return (
       <ClickOutHandler onClickOut={() => this.props.exitBrand(false)}>
-        <div className="brand-page">
+        <div className="page">
           <h1 className="page-header">BRANDS</h1>
           <Form>
             <FormGroup>

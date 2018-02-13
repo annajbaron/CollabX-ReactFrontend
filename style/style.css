@@ -137,13 +137,14 @@ body {
   z-index: 99999 !important;
 }
 
-.collection-page {
-  text-align: center;
+.page {
+  margin-bottom: 30px;
 }
 
 .page-header {
   font-family: 'Libre Barcode 39 Extended Text';
   text-align: center;
+  margin: 20px 0;
 }
 
 .collab-x-logo {
@@ -172,24 +173,15 @@ body {
   height: 60vh;
 }
 
-.collection-sneak-peak:hover {
-  animation: image 5s infinite both;
+/* .collection-sneak-peak:hover {
+  animation: image 4s linear both;
 }
 
 @keyframes image {
-  59.999% {
-    background: orangered;
+  50% {
+    background: inherit;
   }
-  60% {
-    background: teal;
-  }
-  69.999% {
-    background: teal;
-  }
-  70% {
-    background: orangered;
-  }
-}
+} */
 
 .follow {
   float: right;
@@ -197,6 +189,7 @@ body {
 
 .modal-title {
   font-family: 'Meera Inimai', sans-serif;
+  font-weight: 400;
   letter-spacing: 2px;
 }
 
@@ -217,6 +210,12 @@ body {
   border-radius: 0;
 }
 
+.modal-body, .modal-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .btn-sign {
   border: 1px solid gray;
   width: inherit;
@@ -226,4 +225,13 @@ button:focus {
   outline: 0 !important;
   -webkit-filter: invert(75%);
   filter: invert(75%);
+}
+
+.map-title {
+  font-family: 'Montserrat Subrayada', sans-serif;
+}
+
+.MapContainer {
+  position: relative !important;
+  text-align: center;
 }

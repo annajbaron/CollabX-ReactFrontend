@@ -23,11 +23,12 @@ class MapContainer extends Component {
 
 
   render() {
-
+    const {followedBrands} = this.props;
+    console.log(followedBrands);
     return (
       <div className="MapContainer">
         <Map
-          style={{height: '60vh', width: '60vw'}}
+          style={{height: '50vh', width: '70vw', margin: '0 auto'}}
           google={this.props.google}
           initialCenter={{
               lat: 49.2819605, lng: -123.1086604
@@ -35,6 +36,16 @@ class MapContainer extends Component {
           zoom={14}
         >
 
+          {
+            this.props.followedBrands.map(follow => (
+              <Marker
+                key={follow.brand.id}
+                onClick={this.onMarkerClick}
+                name={follow.brand.name}
+                position={{lat:follow.brand.latitude, lng: follow.brand.longitude}}
+              />
+            ))
+          }
 
           <InfoWindow
           marker={this.state.activeMarker}
@@ -49,20 +60,10 @@ class MapContainer extends Component {
       );
     }
   }
-  // {
-  //   this.props.organizations.map(organization => (
-  //     <Marker
-  //       key={organization.id}
-  //       onClick={this.onMarkerClick}
-  //       name={organization.name}
-  //       position={{lat: organization.latitude, lng: organization.longitude}}
-  //     />
-  //   ))
-  // }
 
   const mapStateToProps = (state) => {
     return {
-
+      followedBrands: state.followedBrands
     }
   };
 

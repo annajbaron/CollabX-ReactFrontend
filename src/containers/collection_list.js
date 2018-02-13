@@ -14,9 +14,16 @@ class CollectionList extends Component {
       })
   }
 
+  triggerSlides() {
+    // const collectionimg = collection.name.replace( /\s/g, "").toLowerCase();
+    console.log('slides triggered');
+
+  }
+
   renderList() {
     return this.props.collections.map((collection) => {
       const collectionimg = collection.name.replace( /\s/g, "").toLowerCase();
+      // onMouseOver={this.triggerSlides}
       return (
         <div
           key={collection.name}
@@ -37,7 +44,7 @@ class CollectionList extends Component {
     const {collections} = this.props;
     if (collections){
       return(
-        <div className="collection-page">
+        <div className="page">
           <h1 className="page-header">COLLECTIONS 2017</h1>
           <div className="collection-list">
             {this.renderList()}
