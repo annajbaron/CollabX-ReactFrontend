@@ -27,7 +27,7 @@ class NavBar extends Component {
     const {user} = this.props;
     return (
       <div className="collab-nav">
-        <NavLink tag={Link} to="/"><img src="https://s3.amazonaws.com/collab-x-pictures/logoheader" className="collab-x-logo"/></NavLink>
+        <NavLink tag={Link} to="/"><img src="https://s3.amazonaws.com/collab-x-pictures/collablogo" className="collab-x-logo"/></NavLink>
       <Navbar className="nav-bar">
         <Nav className="menu">
           <NavItem className="nav-item">

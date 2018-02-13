@@ -34,7 +34,9 @@ class CollectionList extends Component {
             backgroundSize: 'cover'
           }}
           >
-            {collection.name}
+            <div className="collection-title">
+              {collection.name}
+            </div>
           </div>
       );
     });

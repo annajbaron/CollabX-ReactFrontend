@@ -150,7 +150,13 @@ body {
 }
 
 .collab-x-logo {
-  height: 50px;
+  height: 60px;
+}
+
+.collab-x-logo:hover {
+  filter: invert;
+  -webkit-filter: invert(100%);
+  transition: filter 0.2s;
 }
 
 .collab-nav {
@@ -175,7 +181,24 @@ body {
   height: 60vh;
 }
 
-/* .collection-sneak-peak:hover {
+.collection-sneak-peak > .collection-title {
+  display: none;
+}
+
+.collection-sneak-peak:hover > .collection-title {
+  display: block;
+}
+
+.collection-title {
+  margin-top: 25vh;
+  text-align: center;
+  padding: 1vh 0;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.collection-sneak-peak:hover {
+  color: black
   animation: image 4s linear both;
 }
 
@@ -183,7 +206,7 @@ body {
   50% {
     background: inherit;
   }
-} */
+}
 
 .follow {
   float: right;
