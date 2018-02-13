@@ -44,15 +44,15 @@ class CollectionDetail extends Component {
             </Moment>
           </div>
           { likedCollections.map(like => like.collection_id).includes(collection.id) ?
-            <button
+            <i className="material-icons"
               onClick={() => this.removeLike(targetLike)}
-              > Unlike -
-            </button>
+              >bookmark
+            </i>
             :
-            <button
+            <i className="material-icons"
               onClick={() => this.addLike(collection)}
-              > Like +
-            </button>
+              >bookmark_border
+            </i>
           }
         </div>
       );

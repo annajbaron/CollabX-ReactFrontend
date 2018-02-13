@@ -144,7 +144,6 @@ body {
 .page-header {
   font-family: 'Libre Barcode 39 Extended Text';
   text-align: center;
-
 }
 
 .collab-x-logo {
@@ -169,8 +168,27 @@ body {
 }
 
 .collection-sneak-peak {
-  width: 7vw;
+  width: 10vw;
   height: 60vh;
+}
+
+.collection-sneak-peak:hover {
+  animation: image 5s infinite both;
+}
+
+@keyframes image {
+  59.999% {
+    background: orangered;
+  }
+  60% {
+    background: teal;
+  }
+  69.999% {
+    background: teal;
+  }
+  70% {
+    background: orangered;
+  }
 }
 
 .follow {
@@ -191,10 +209,21 @@ body {
   -o-transition: all 0.20s ease-in-out;
 }
 
-.search-bar:focus {
+.collab-input:focus {
   border: 1px solid black;
 }
 
 .modal-content {
   border-radius: 0;
+}
+
+.btn-sign {
+  border: 1px solid gray;
+  width: inherit;
+}
+
+button:focus {
+  outline: 0 !important;
+  -webkit-filter: invert(75%);
+  filter: invert(75%);
 }

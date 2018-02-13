@@ -65,13 +65,13 @@ class SignIn extends Component {
   render() {
     return(
       <div className="sign-in">
-        <p>SIGN IN</p>
+        <h1 className="page-header">SIGN IN</h1>
         <form>
           <div className="form-group row">
             <div className="col-sm-12">
               <input
                 type="text"
-                className="form-control input_email"
+                className="form-control input_email collab-input"
                 name="email"
                 placeholder="E-MAIL"
                 onInput={this.handleChange.bind(this)}
@@ -83,7 +83,7 @@ class SignIn extends Component {
             <div className="col-sm-12">
               <input
                 type="password"
-                className="form-control input_password"
+                className="form-control input_password collab-input"
                 name="password"
                 onInput={this.handleChange.bind(this)}
                 value={this.state.password}
@@ -91,13 +91,17 @@ class SignIn extends Component {
               />
             </div>
           </div>
-          <button
-            type="button"
-            className="form-submit btn btn-primary"
-            onClick={()=>this.createToken()}
-          >
-            SUBMIT
-          </button>
+          <div className="form-group row">
+            <div className="col-sm-12">
+              <button
+                type="button"
+                className="center-block btn-sign"
+                onClick={()=>this.createToken()}
+              >
+                SUBMIT
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     )
