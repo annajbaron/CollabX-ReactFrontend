@@ -16,12 +16,13 @@ body {
 .nav-bar {
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: space-between;
 }
 
 .menu {
-  width: 70vw;
+  width: 75vw;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
@@ -40,6 +41,7 @@ body {
 .nav-item {
   list-style: none !important;
   list-style-type: none !important;
+  text-align: center !important;
 }
 
 .menu-item:before {
@@ -234,4 +236,7 @@ button:focus {
 .MapContainer {
   position: relative !important;
   text-align: center;
+}
+
+.pitch-sneak-peak {
 }

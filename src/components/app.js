@@ -15,6 +15,7 @@ import {Follow} from '../requests/follows';
 import AuthRoute from '../containers/auth_route';
 import AntiAuthRoute from '../containers/anti_auth_route';
 import UserProfile from '../containers/user_profile';
+import PitchPage from '../containers/pitch';
 
 import {
   BrowserRouter as Router,
@@ -77,6 +78,12 @@ isAuth () {
               path="/brands"
               exact
               component={BrandPage}
+            />
+            <AuthRoute
+              isAuthenticated={this.isAuth()}
+              path="/pitches"
+              exact
+              component={PitchPage}
             />
             <AuthRoute
               isAuthenticated={this.isAuth()}

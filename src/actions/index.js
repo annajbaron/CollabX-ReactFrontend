@@ -46,3 +46,6 @@ createAction(Types.COLLECTION_SELECTED, { payload })
 
 export const exitBrand = payload =>
 createAction(Types.EXIT_BRAND, { payload: status })
+
+export const getPitches = payload =>
+createAction(Types.GET_PITCHES, { payload })

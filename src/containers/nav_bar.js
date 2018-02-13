@@ -34,6 +34,9 @@ class NavBar extends Component {
             <NavLink tag={Link} to="/" className="menu-item">collabs</NavLink>
           </NavItem>
           <NavItem className="nav-item">
+            <NavLink tag={Link} to="/pitches" className="menu-item">pitch</NavLink>
+          </NavItem>
+          <NavItem className="nav-item">
             <NavLink tag={Link} to="/brands" className="menu-item">brands</NavLink>
           </NavItem>
             {
