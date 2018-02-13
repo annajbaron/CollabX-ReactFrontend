@@ -18,6 +18,20 @@ export const Pitch = {
     )
       .then(res => res.json())
   },
+  create (params) {
+    return fetch(
+      `${BASE_URL}/pitches`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': getJwt(),
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(params)
+      }
+    )
+    .then(res => res.json())
+  },
   get (id) {
     return fetch(
       `${BASE_URL}/pitches/${id}`,

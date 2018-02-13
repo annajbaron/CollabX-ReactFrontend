@@ -6,6 +6,21 @@ import {Pitch} from '../requests/pitches';
 
 
 class PitchPage extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      brand_1: "",
+      brand_2: ""
+    }
+  }
+
+  handleChange(event) {
+    const newState = Object.assign({}, this.state, {
+      [event.target.name]: event.target.value,
+    });
+    this.setState(newState);
+  }
+
   componentDidMount() {
     Pitch
       .all()
@@ -13,6 +28,19 @@ class PitchPage extends Component {
         this.props.getPitches(res);
       })
   }
+
+  createPitch() {
+    const {brand_1, brand_2} = this.state;
+    Pitch
+      .create({brand_1, brand_2})
+      .then((res) => {
+        this.props.addPitch(res);
+      })
+      const newState = Object.assign({}, this.state, {
+        brand_1: "", brand_2: ""
+      })
+      this.setState(newState);
+    }
 
   renderList() {
     return this.props.pitches.map((pitch) => {
@@ -38,6 +66,43 @@ class PitchPage extends Component {
           <hr />
           {this.renderList()}
         </div>
+        <form>
+          <div className="form-group row">
+            <div className="col-sm-12">
+              <input
+                type="text"
+                className="form-control collab-input"
+                name="brand_1"
+                placeholder="BRAND 1"
+                onInput={this.handleChange.bind(this)}
+                value={this.state.brand_1}
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <div className="col-sm-12">
+              <input
+                type="text"
+                className="form-control collab-input"
+                name="brand_2"
+                onInput={this.handleChange.bind(this)}
+                value={this.state.brand_2}
+                placeholder="BRAND 2"
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <div className="col-sm-12">
+              <button
+                type="button"
+                className="center-block btn-sign"
+                onClick={()=>this.createPitch()}
+              >
+                SUBMIT
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     )
   }
@@ -51,7 +116,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getPitches: pitches => dispatch(actions.getPitches(pitches))
+    getPitches: pitches => dispatch(actions.getPitches(pitches)),
+    addPitch: pitch => dispatch(actions.addPitch(pitch))
   }
 }
 

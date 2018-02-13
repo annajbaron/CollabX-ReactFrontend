@@ -49,3 +49,6 @@ createAction(Types.EXIT_BRAND, { payload: status })
 
 export const getPitches = payload =>
 createAction(Types.GET_PITCHES, { payload })
+
+export const addPitch = payload =>
+createAction(Types.ADD_PITCH, { payload })
