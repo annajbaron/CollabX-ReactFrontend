@@ -128,7 +128,7 @@ body {
   height: inherit;
   width: inherit;
   text-align: center;
-  padding: 7vw 0;
+  padding-top: 40%;
   font-family: 'Montserrat Subrayada', sans-serif;
 }
 
@@ -171,4 +171,30 @@ body {
 .collection-sneak-peak {
   width: 7vw;
   height: 60vh;
+}
+
+.follow {
+  float: right;
+}
+
+.modal-title {
+  font-family: 'Meera Inimai', sans-serif;
+  letter-spacing: 2px;
+}
+
+.collab-input {
+  text-align: center;
+  border-radius: 0;
+  -webkit-transition: all 0.20s ease-in-out;
+  -moz-transition: all 0.20s ease-in-out;
+  -ms-transition: all 0.20s ease-in-out;
+  -o-transition: all 0.20s ease-in-out;
+}
+
+.search-bar:focus {
+  border: 1px solid black;
+}
+
+.modal-content {
+  border-radius: 0;
 }

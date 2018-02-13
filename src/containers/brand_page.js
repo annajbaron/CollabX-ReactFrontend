@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import {Brand} from '../requests/brands';
 import { Form, FormGroup, Input } from 'reactstrap';
 import BrandDetail from './brand_detail';
+import ClickOutHandler from 'react-onclickout';
 
 class BrandPage extends Component {
   constructor(props) {
@@ -59,45 +60,48 @@ class BrandPage extends Component {
   render() {
     const {brands} = this.props;
     return (
-      <div className="brand-page">
-        <h1 className="page-header">BRANDS</h1>
-        <Form>
-          <FormGroup>
-              <Input
-                type="text"
-                name="searchValue"
-                className="form-control"
-                size='sm'
-                placeholder="Search ..."
-                value={this.state.searchValue}
-                onInput={this.handleChange.bind(this)}
-              />
-          </FormGroup>
-        </Form>
-        <BrandDetail />
-        <br />
-        { brands ?
-          <div className="brand-wrapper">
-              {this.renderList()}
-          </div>
-          :
-          <div/>
-        }
-      </div>
+      <ClickOutHandler onClickOut={() => this.props.exitBrand(false)}>
+        <div className="brand-page">
+          <h1 className="page-header">BRANDS</h1>
+          <Form>
+            <FormGroup>
+                <Input
+                  type="text"
+                  name="searchValue"
+                  className="collab-input"
+                  size='sm'
+                  placeholder="TYPE TO SEARCH"
+                  value={this.state.searchValue}
+                  onInput={this.handleChange.bind(this)}
+                />
+            </FormGroup>
+          </Form>
+            <BrandDetail />
+          <br />
+          { brands ?
+            <div className="brand-wrapper">
+                {this.renderList()}
+            </div>
+            :
+            <div/>
+          }
+        </div>
+      </ClickOutHandler>
     )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    brands: state.brands ? state.brands : null,
+    brands: state.brands ? state.brands : null
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     selectBrand: brand => dispatch(actions.selectBrand(brand)),
-    getBrands: brands => dispatch(actions.getBrands(brands))
+    getBrands: brands => dispatch(actions.getBrands(brands)),
+    exitBrand: status => dispatch(actions.exitBrand(status))
   }
 }
 

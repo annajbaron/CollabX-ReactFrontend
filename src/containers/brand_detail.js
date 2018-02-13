@@ -4,8 +4,11 @@ import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Follow} from '../requests/follows';
 import { Button } from 'reactstrap';
+import ClickOutHandler from 'react-onclickout';
+
 
 class BrandDetail extends Component {
+
   addFollow(brand) {
     Follow
       .create(brand)
@@ -34,14 +37,23 @@ class BrandDetail extends Component {
       return follow.brand_id == brand.id;
     });
       return(
-        <div className="modal-content modal-fade">
+        <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="exampleModal3Label">
-              {brand.name}
-              <Button className="close" onClick={() => this.props.exitBrand(false)}>
-                &times;
-              </Button>
+            { followedBrands.map(follow => follow.brand_id).includes(brand.id) ?
+              <i className="material-icons follow" onClick={() => this.removeFollow(targetFollow)}>add</i>
+              :
+              <i className="material-icons follow" onClick={() => this.addFollow(brand)}>done</i>
+            }
+            <h5 className="modal-title">
+              {brand.name.toUpperCase()}
             </h5>
+              { !brand.founded ?
+                <div>Creations ongoing...</div>
+                :
+                <div>
+                  Est. {brand.founded}
+                </div>
+              }
           </div>
           <div className="modal-body">
             { !brand.hq ?
@@ -50,24 +62,6 @@ class BrandDetail extends Component {
               <div>
                 {brand.hq}<br />
               </div>
-            }
-            { !brand.founded ?
-              <div>Creations ongoing...</div>
-              :
-              <div>
-                Est. {brand.founded}
-              </div>
-            }
-            { followedBrands.map(follow => follow.brand_id).includes(brand.id) ?
-              <Button
-                onClick={() => this.removeFollow(targetFollow)}
-                > Over it -
-              </Button>
-              :
-              <Button
-                onClick={() => this.addFollow(brand)}
-                > Add to Rotation +
-              </Button>
             }
           </div>
         </div>
@@ -86,8 +80,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addFollowedBrands: newFollow => dispatch(actions.addFollowedBrands(newFollow)),
-    removeFollowedBrands: removeFollow => dispatch(actions.removeFollowedBrands(removeFollow)),
-    exitBrand: status => dispatch(actions.exitBrand(status))
+    removeFollowedBrands: removeFollow => dispatch(actions.removeFollowedBrands(removeFollow))
   }
 }
 
