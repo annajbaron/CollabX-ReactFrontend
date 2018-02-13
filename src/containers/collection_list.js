@@ -16,11 +16,16 @@ class CollectionList extends Component {
 
   renderList() {
     return this.props.collections.map((collection) => {
+      const collectionimg = collection.name.replace( /\s/g, "").toLowerCase();
       return (
         <div
           key={collection.name}
           onClick={() => this.props.selectCollection(collection)}
-          className=""
+          className="collection-sneak-peak"
+          style={{
+            background: `url(https://s3.amazonaws.com/collab-x-pictures/${collectionimg}1) center`,
+            backgroundSize: 'cover'
+          }}
           >
             {collection.name}
           </div>

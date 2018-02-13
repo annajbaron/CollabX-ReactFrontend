@@ -161,3 +161,14 @@ body {
 .menu-item {
   text-align: center;
 }
+
+.collection-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.collection-sneak-peak {
+  width: 7vw;
+  height: 60vh;
+}
