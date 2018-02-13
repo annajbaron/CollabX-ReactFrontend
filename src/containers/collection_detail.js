@@ -25,9 +25,10 @@ class CollectionDetail extends Component {
 
   render() {
     const { collection, likedCollections } = this.props;
+    console.log(likedCollections);
     if (!this.props.collection) {
       return(
-        <div>Select a collection.</div>
+        <div></div>
       )
     }
     const targetLike = likedCollections.find(function(like) {

@@ -17,13 +17,13 @@ class CollectionList extends Component {
   renderList() {
     return this.props.collections.map((collection) => {
       return (
-        <li
+        <div
           key={collection.name}
           onClick={() => this.props.selectCollection(collection)}
-          className="list-group-item"
+          className=""
           >
             {collection.name}
-          </li>
+          </div>
       );
     });
   }
@@ -32,9 +32,12 @@ class CollectionList extends Component {
     const {collections} = this.props;
     if (collections){
       return(
-        <ul className="list-group col-sm-4">
-          {this.renderList()}
-        </ul>
+        <div className="collection-page">
+          <h1 className="page-header">COLLECTIONS 2017</h1>
+          <div className="collection-list">
+            {this.renderList()}
+          </div>
+        </div>
       )} else {
         return <div/>;
       }

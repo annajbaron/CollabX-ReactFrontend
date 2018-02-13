@@ -39,16 +39,18 @@ class BrandPage extends Component {
       return (
         <div
           key={brand.name}
-          onClick={() => this.props.selectBrand(brand)}
           className="grid-item"
           style={{
             background: `url(https://s3.amazonaws.com/collab-x-pictures/${logo}) center`,
             backgroundSize: 'cover',
-            width: '175px',
-            height: '175px'
+            width: '15vw',
+            height: '15vw'
           }}
         >
-        <div className="brand-detail">{brand.name}</div>
+        <div
+          className="brand-detail"
+          onClick={() => this.props.selectBrand(brand)}
+        >{brand.name}</div>
         </div>
       )
     })
@@ -58,6 +60,7 @@ class BrandPage extends Component {
     const {brands} = this.props;
     return (
       <div className="brand-page">
+        <h1 className="page-header">BRANDS</h1>
         <Form>
           <FormGroup>
               <Input

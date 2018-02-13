@@ -49,6 +49,13 @@ class SignIn extends Component {
     Follow
       .all()
       .then(this.props.setFollowedBrands);
+    this.loadLikes;
+  }
+
+  loadLikes() {
+    const jwt = localStorage.getItem('jwt');
+    const user = jwtDecode(jwt);
+
     Like
       .all()
       .then(this.props.setLikedCollections);
