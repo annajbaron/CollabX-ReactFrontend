@@ -72,7 +72,7 @@ class BrandDetail extends Component {
               }
           </div>
           <div className="modal-body">
-            Latest Collabs
+            Latest Collabs:
             <div>
               {
                 this.state.temp.map(hello => (<div>{hello.name}</div>))

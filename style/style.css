@@ -124,8 +124,7 @@ body {
 
 .brand-detail {
   display: none;
-  background-color: black;
-  opacity: 0.85;
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
   height: inherit;
   width: inherit;
@@ -177,7 +176,7 @@ body {
 }
 
 .collection-sneak-peak {
-  width: 10vw;
+  width: 8vw;
   height: 60vh;
 }
 

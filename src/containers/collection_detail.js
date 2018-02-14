@@ -35,28 +35,28 @@ class CollectionDetail extends Component {
       return like.collection_id == collection.id;
     });
       return(
-        <div className="collection-detail">
-          <h3>Details for:</h3>
-          <div>{this.props.collection.name}</div>
-          <div>
+        <div className="modal-content">
+          <div className="modal-header">
+            { likedCollections.map(like => like.collection_id).includes(collection.id) ?
+              <i className="material-icons follow"
+                onClick={() => this.removeLike(targetLike)}
+                >bookmark
+              </i>
+              :
+              <i className="material-icons follow"
+                onClick={() => this.addLike(collection)}
+                >bookmark_border
+              </i>
+            }
+            <h5 className="modal-title">
+              {this.props.collection.name}
+            </h5>
             <Moment format="MMMM Do YYYY">
               {this.props.collection.date}
             </Moment>
           </div>
-          { likedCollections.map(like => like.collection_id).includes(collection.id) ?
-            <i className="material-icons"
-              onClick={() => this.removeLike(targetLike)}
-              >bookmark
-            </i>
-            :
-            <i className="material-icons"
-              onClick={() => this.addLike(collection)}
-              >bookmark_border
-            </i>
-          }
         </div>
       );
-
   }
 }
 

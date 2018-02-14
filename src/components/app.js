@@ -5,8 +5,6 @@ import SignIn from '../containers/sign_in';
 import SignUp from '../containers/sign_up';
 import NavBar from '../containers/nav_bar';
 import Welcome from '../containers/welcome';
-import CollectionList from '../containers/collection_list';
-import CollectionDetail from '../containers/collection_detail';
 import CollectionPage from '../containers/collection_page';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
@@ -55,8 +53,7 @@ isAuth () {
           <Switch>
             <Route path="/" exact>
               <div>
-                <CollectionList />
-                <CollectionDetail />
+                <CollectionPage />
               </div>
             </Route>
             <Route path="/sign_up">
