@@ -4,9 +4,9 @@ import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Collection} from '../requests/collections';
 import CollectionDetail from './collection_detail';
-import CollectionOverview from './collection_overview';
 
-class CollectionPage extends Component {
+
+class Upcoming extends Component {
   componentDidMount() {
     Collection
       .all()
@@ -16,14 +16,22 @@ class CollectionPage extends Component {
   }
 
   renderList() {
-    return this.props.collections.map((collection, i) => {
+    return this.props.collections.map((collection) => {
       const collectionimg = collection.name.replace( /\s/g, "").toLowerCase();
       return (
-        <CollectionOverview
-          key={i}
-          collection={collection}
-          collectionimg={collectionimg}
-        />
+        <div
+          key={collection.name}
+          onClick={() => this.props.selectCollection(collection)}
+          className="collection-sneak-peak"
+          style={{
+            background: `url(https://s3.amazonaws.com/collab-x-pictures/${collectionimg}1) center`,
+            backgroundSize: 'cover'
+          }}
+          >
+            <div className="collection-title">
+              {collection.name}
+            </div>
+          </div>
       );
     });
   }
@@ -33,9 +41,9 @@ class CollectionPage extends Component {
     if (collections){
       return(
         <div className="page">
-          <h1 className="page-header">COLLECTIONS 2017</h1>
+          <h1 className="page-header">ABOUT TO DROP</h1>
           <div className="collection-list">
-            {this.renderList()}
+            <div className="no-content">- get hyped and check back soon -</div>
           </div>
           <CollectionDetail />
         </div>
@@ -58,4 +66,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CollectionPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Upcoming);

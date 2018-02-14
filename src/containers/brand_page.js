@@ -6,6 +6,8 @@ import {Brand} from '../requests/brands';
 import { Form, FormGroup, Input } from 'reactstrap';
 import BrandDetail from './brand_detail';
 import ClickOutHandler from 'react-onclickout';
+import {Collection} from '../requests/collections';
+
 
 class BrandPage extends Component {
   constructor(props) {
@@ -32,6 +34,20 @@ class BrandPage extends Component {
     this.props.getBrands();
   }
 
+  loadCollections(id){
+    Collection
+      .get(id)
+      // .then(res => this.setState({temp: res}))
+      .then(res => this.setState({ collectionNames: [...this.state.collectionNames, res.name] }));
+  }
+
+  selectBrand(brand) {
+    this.setState({ collectionNames: [] });
+    this.props.selectBrand(brand);
+    const collectionIds = brand.collaborators.map(collaborator => collaborator.collection_id);
+    collectionIds.map(id => this.loadCollections(id));
+  }
+
   renderList() {
     const refinedBrands = this.props.brands.filter(brand => brand.name.toLowerCase().includes(this.state.searchValue));
 
@@ -50,7 +66,7 @@ class BrandPage extends Component {
         >
         <div
           className="brand-detail"
-          onClick={() => this.props.selectBrand(brand)}
+          onClick={() => this.selectBrand(brand)}
         >{brand.name}</div>
         </div>
       )
@@ -76,7 +92,7 @@ class BrandPage extends Component {
                 />
             </FormGroup>
           </Form>
-            <BrandDetail />
+            <BrandDetail collectionNames={this.state.collectionNames}/>
           <br />
           { brands ?
             <div className="brand-wrapper">

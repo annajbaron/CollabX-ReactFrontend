@@ -77,6 +77,7 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: 2;
+  /* transition: background 0.2s ease; */
 }
 
 .welcome-img {
@@ -176,7 +177,7 @@ body {
 }
 
 .collection-sneak-peak {
-  width: 8vw;
+  width: 10vw;
   height: 60vh;
 }
 
@@ -189,23 +190,23 @@ body {
 }
 
 .collection-title {
-  margin-top: 25vh;
   text-align: center;
-  padding: 1vh 0;
+  height: 60vh;
+  padding: 25vh 2vh;
   color: white;
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.collection-sneak-peak:hover {
-  color: black
+/* .collection-sneak-peak:hover {
+  color: black;
   animation: image 4s linear both;
-}
-
+} */
+/* 
 @keyframes image {
   50% {
     background: inherit;
   }
-}
+} */
 
 .follow {
   float: right;
@@ -253,6 +254,8 @@ button:focus {
 
 .map-title {
   font-family: 'Montserrat Subrayada', sans-serif;
+  text-align: center;
+  margin: 2vh 0;
 }
 
 .MapContainer {
@@ -261,4 +264,9 @@ button:focus {
 }
 
 .pitch-sneak-peak {
+}
+
+.no-content {
+  margin: 0 auto;
+  text-align: center;
 }

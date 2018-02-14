@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Follow} from '../requests/follows';
-import {Collection} from '../requests/collections';
 import { Button } from 'reactstrap';
 import ClickOutHandler from 'react-onclickout';
 
@@ -33,14 +32,6 @@ class BrandDetail extends Component {
       })
   }
 
-  loadCollections(id){
-    Collection
-      .get(id)
-      .then(res => this.setState({temp: res}))
-      .then(res => console.log(res.name))
-  }
-
-
   render() {
     const { brand, followedBrands } = this.props;
     if (!this.props.brand) {
@@ -49,9 +40,7 @@ class BrandDetail extends Component {
     const targetFollow = followedBrands.find(function(follow) {
       return follow.brand_id == brand.id;
     });
-    const collectionIds = brand.collaborators.map(collaborator => collaborator.collection_id)
-    // collectionIds.map(id => this.loadCollections(id))
-    // console.log(collectionIds);
+
       return(
         <div className="modal-content">
           <div className="modal-header">
@@ -75,7 +64,7 @@ class BrandDetail extends Component {
             Latest Collabs:
             <div>
               {
-                this.state.temp.map(hello => (<div>{hello.name}</div>))
+                this.props.collectionNames.map(hello => (<div>{hello}</div>))
               }
             </div>
           </div>

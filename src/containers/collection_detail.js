@@ -25,7 +25,6 @@ class CollectionDetail extends Component {
 
   render() {
     const { collection, likedCollections } = this.props;
-    console.log(likedCollections);
     if (!this.props.collection) {
       return(
         <div></div>

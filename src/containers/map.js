@@ -24,7 +24,7 @@ class MapContainer extends Component {
 
   render() {
     const {followedBrands} = this.props;
-    console.log(followedBrands);
+    console.log(this.props.followedBrands)
     return (
       <div className="MapContainer">
         <Map

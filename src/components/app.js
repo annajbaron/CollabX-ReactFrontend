@@ -14,6 +14,7 @@ import AuthRoute from '../containers/auth_route';
 import AntiAuthRoute from '../containers/anti_auth_route';
 import UserProfile from '../containers/user_profile';
 import PitchPage from '../containers/pitch';
+import Upcoming from '../containers/upcoming';
 
 import {
   BrowserRouter as Router,
@@ -32,7 +33,7 @@ componentDidMount() {
       .all()
       .then(this.props.setFollowedBrands);
   } else {
-    console.log('no user');
+    console.log('No User');
   }
 }
 
@@ -69,6 +70,12 @@ isAuth () {
                         component={SignIn}
                       />
               }}
+            />
+            <AuthRoute
+              isAuthenticated={this.isAuth()}
+              path="/upcoming"
+              exact
+              component={Upcoming}
             />
             <AuthRoute
               isAuthenticated={this.isAuth()}

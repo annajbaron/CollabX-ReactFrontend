@@ -4,17 +4,12 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {
-  Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  NavLink } from 'reactstrap';
 
 class NavBar extends Component {
 
@@ -34,6 +29,9 @@ class NavBar extends Component {
             <NavLink tag={Link} to="/" className="menu-item">collabs</NavLink>
           </NavItem>
           <NavItem className="nav-item">
+            <NavLink tag={Link} to="/upcoming" className="menu-item">upcoming</NavLink>
+          </NavItem>
+          <NavItem className="nav-item">
             <NavLink tag={Link} to="/pitches" className="menu-item">pitch</NavLink>
           </NavItem>
           <NavItem className="nav-item">
@@ -41,7 +39,7 @@ class NavBar extends Component {
           </NavItem>
             {
               user ? ([
-                <NavItem className="nav-item">
+                <NavItem key='1' className="nav-item">
                   <NavLink
                     tag={Link}
                     to="/profile"
@@ -50,7 +48,7 @@ class NavBar extends Component {
                     hello, {user.first_name}
                   </NavLink>
                 </NavItem>,
-                <NavItem className="nav-item">
+                <NavItem key='2' className="nav-item">
                   <NavLink
                     onClick={() => this.handleSignOut(user)}
                     to="#"
@@ -62,7 +60,7 @@ class NavBar extends Component {
               ])
                  :
               ([
-                <NavItem className="nav-item">
+                <NavItem key='1' className="nav-item">
                   <NavLink
                     tag={Link}
                     to="/sign_in"
@@ -71,7 +69,7 @@ class NavBar extends Component {
                     sign in
                   </NavLink>
                 </NavItem>,
-                <NavItem className="nav-item">
+                <NavItem key='2' className="nav-item">
                   <NavLink
                     tag={Link}
                     to="/sign_up"

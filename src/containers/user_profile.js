@@ -40,7 +40,7 @@ class UserProfile extends Component {
       <WrappedContainer />
       </div>
     )
-}
+  }
 }
 
 function mapStateToProps(state) {
