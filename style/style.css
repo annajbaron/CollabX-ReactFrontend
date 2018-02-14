@@ -197,17 +197,6 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* .collection-sneak-peak:hover {
-  color: black;
-  animation: image 4s linear both;
-} */
-/* 
-@keyframes image {
-  50% {
-    background: inherit;
-  }
-} */
-
 .follow {
   float: right;
 }
@@ -233,6 +222,12 @@ body {
 
 .modal-content {
   border-radius: 0;
+  position: fixed;
+  width: 60vw;
+  left: 20vw;
+  height: 40vh;
+  top: 40vh;
+  opacity: 0.98;
 }
 
 .modal-body, .modal-footer {

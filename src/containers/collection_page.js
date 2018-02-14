@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import {Collection} from '../requests/collections';
 import CollectionDetail from './collection_detail';
 import CollectionOverview from './collection_overview';
+import ClickOutHandler from 'react-onclickout';
 
 class CollectionPage extends Component {
   componentDidMount() {
@@ -32,13 +33,15 @@ class CollectionPage extends Component {
     const {collections} = this.props;
     if (collections){
       return(
-        <div className="page">
-          <h1 className="page-header">COLLECTIONS 2017</h1>
-          <div className="collection-list">
-            {this.renderList()}
+        <ClickOutHandler onClickOut={() => this.props.exitCollection(false)}>
+          <div className="page">
+            <h1 className="page-header">COLLECTIONS 2017</h1>
+            <div className="collection-list">
+              {this.renderList()}
+            </div>
+            <CollectionDetail />
           </div>
-          <CollectionDetail />
-        </div>
+        </ClickOutHandler>
       )} else {
         return <div/>;
       }
@@ -54,7 +57,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getCollections: collections => dispatch(actions.getCollections(collections)),
-    selectCollection: collection => dispatch(actions.selectCollection(collection))
+    selectCollection: collection => dispatch(actions.selectCollection(collection)),
+    exitCollection: collection => dispatch(actions.exitCollection(collection))
   }
 }
 

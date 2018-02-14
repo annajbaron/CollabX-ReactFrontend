@@ -34,7 +34,7 @@ class CollectionDetail extends Component {
       return like.collection_id == collection.id;
     });
       return(
-        <div className="modal-content">
+        <div className="modal-content collection-modal">
           <div className="modal-header">
             { likedCollections.map(like => like.collection_id).includes(collection.id) ?
               <i className="material-icons follow"

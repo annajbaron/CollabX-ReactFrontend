@@ -64,20 +64,20 @@ class BrandDetail extends Component {
             Latest Collabs:
             <div>
               {
-                this.props.collectionNames.map(hello => (<div>{hello}</div>))
+                this.props.collectionNames && this.props.collectionNames.map((name, i) => (<div key={i}>{name}</div>))
               }
             </div>
           </div>
           <div className="modal-footer">
             { !brand.hq ?
               ([
-                <div>Worldwide&nbsp;</div>,
-                <i className="material-icons">flight_takeoff</i>
+                <div key="1">Worldwide&nbsp;</div>,
+                <i className="material-icons" key="2">flight_takeoff</i>
               ])
               :
               ([
-                <div>{brand.hq}&nbsp;</div>,
-                <i className="material-icons">room</i>
+                <div key="1">{brand.hq}&nbsp;</div>,
+                <i className="material-icons" key="2">room</i>
               ])
             }
           </div>

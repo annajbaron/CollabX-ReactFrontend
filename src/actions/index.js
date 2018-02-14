@@ -52,3 +52,6 @@ createAction(Types.GET_PITCHES, { payload })
 
 export const addPitch = payload =>
 createAction(Types.ADD_PITCH, { payload })
+
+export const exitCollection = payload =>
+createAction(Types.EXIT_COLLECTION, { payload })
