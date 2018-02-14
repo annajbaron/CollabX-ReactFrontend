@@ -6,6 +6,15 @@ import {Like} from '../requests/likes';
 import Moment from 'react-moment';
 
 class CollectionDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pictures: new Array(props.collection && props.collection.pictures)
+        .fill()
+        .map((el, i) => `https://s3.amazonaws.com/collab-x-pictures/${props.collection && props.collection.name.replace( /\s/g, "").toLowerCase()}${i+1}`)
+    }
+  }
+
   addLike(collection) {
     Like
       .create(collection)
@@ -21,7 +30,6 @@ class CollectionDetail extends Component {
         this.props.removeLikedCollections(likeId);
       })
   }
-
 
   render() {
     const { collection, likedCollections } = this.props;
@@ -53,6 +61,13 @@ class CollectionDetail extends Component {
             <Moment format="MMMM Do YYYY">
               {this.props.collection.date}
             </Moment>
+          </div>
+          <div className="modal-body">
+            {this.state.pictures.map((picture, i) => (
+              <div key={i}>
+                <img className="collection-picture" src={picture} />
+              </div>
+            ))}
           </div>
         </div>
       );

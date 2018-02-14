@@ -13,7 +13,7 @@ class CollectionOverview extends Component {
         onClick={() => this.props.selectCollection(this.props.collection)}
         className="collection-sneak-peak"
         style={{
-          background: `url(https://s3.amazonaws.com/collab-x-pictures/${this.props.collectionimg}1) center`,
+          background: `url(https://s3.amazonaws.com/collab-x-pictures/${this.props.collectionImg}1) center`,
           backgroundSize: 'cover'
         }}
         >

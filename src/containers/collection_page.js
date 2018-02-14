@@ -18,12 +18,12 @@ class CollectionPage extends Component {
 
   renderList() {
     return this.props.collections.map((collection, i) => {
-      const collectionimg = collection.name.replace( /\s/g, "").toLowerCase();
+      const collectionImg = collection.name.replace( /\s/g, "").toLowerCase();
       return (
         <CollectionOverview
           key={i}
           collection={collection}
-          collectionimg={collectionimg}
+          collectionImg={collectionImg}
         />
       );
     });
@@ -39,7 +39,11 @@ class CollectionPage extends Component {
             <div className="collection-list">
               {this.renderList()}
             </div>
-            <CollectionDetail />
+            {
+              this.props.activeCollection ?
+              <CollectionDetail /> :
+              null
+            }
           </div>
         </ClickOutHandler>
       )} else {
@@ -50,7 +54,8 @@ class CollectionPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    collections: state.collections ? state.collections : null
+    collections: state.collections ? state.collections : null,
+    activeCollection: state.activeCollection
   };
 }
 

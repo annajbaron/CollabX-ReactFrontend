@@ -45,9 +45,13 @@ class BrandDetail extends Component {
         <div className="modal-content">
           <div className="modal-header">
             { followedBrands.map(follow => follow.brand_id).includes(brand.id) ?
-              <i className="material-icons follow" onClick={() => this.removeFollow(targetFollow)}>done</i>
+              <p className="follow">remove
+              <i className="material-icons" onClick={() => this.removeFollow(targetFollow)}>done</i>
+              </p>
               :
-              <i className="material-icons follow" onClick={() => this.addFollow(brand)}>add</i>
+              <p className="follow">add
+              <i className="material-icons" onClick={() => this.addFollow(brand)}>add</i>
+              </p>
             }
             <h5 className="modal-title">
               {brand.name.toUpperCase()}
