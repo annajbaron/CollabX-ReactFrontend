@@ -52,15 +52,20 @@ isAuth () {
           }
           <NavBar />
           <Switch>
-            <Route path="/" exact>
+            <AuthRoute
+              isAuthenticated={this.isAuth()}
+              path="/"
+              exact
+              component={CollectionPage}
+            />
+            {/* <Route path="/" exact>
               <div>
                 <CollectionPage />
               </div>
-            </Route>
+            </Route> */}
             <Route path="/sign_up">
               <div><SignUp /></div>
             </Route>
-
             <Route
               path="/sign_in"
               render={props => {

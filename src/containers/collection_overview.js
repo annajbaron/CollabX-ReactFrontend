@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
-import {Collection} from '../requests/collections';
 
 class CollectionOverview extends Component {
 
@@ -27,7 +26,6 @@ class CollectionOverview extends Component {
 
 function mapStateToProps(state) {
   return {
-    likedCollections: state.likedCollections
   };
 }
 

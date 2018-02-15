@@ -37,29 +37,22 @@ class SignIn extends Component {
           const newState = Object.assign({}, this.state, {
             email: "", password: "",
           });
-          this.setState(newState, this.loadProfile);
+          this.setState(newState, this.loadProfile());
         }
       });
   }
 
   loadProfile() {
-    const jwt = localStorage.getItem('jwt');
-    const user = jwtDecode(jwt);
-
     Follow
       .all()
-      .then(this.props.setFollowedBrands);
-    this.loadLikes;
+      .then(this.props.setFollowedBrands, this.loadLikes());
   }
 
   loadLikes() {
-    const jwt = localStorage.getItem('jwt');
-    const user = jwtDecode(jwt);
-
     Like
       .all()
       .then(this.props.setLikedCollections);
-    this.props.history.push('/');
+      this.props.history.push('/');
   }
 
   render() {

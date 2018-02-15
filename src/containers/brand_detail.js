@@ -8,13 +8,6 @@ import ClickOutHandler from 'react-onclickout';
 
 
 class BrandDetail extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      temp: []
-    }
-  }
 
   addFollow(brand) {
     Follow
@@ -45,13 +38,17 @@ class BrandDetail extends Component {
         <div className="modal-content">
           <div className="modal-header">
             { followedBrands.map(follow => follow.brand_id).includes(brand.id) ?
-              <p className="follow">remove
-              <i className="material-icons" onClick={() => this.removeFollow(targetFollow)}>done</i>
-              </p>
+              <div onClick={() => this.removeFollow(targetFollow)}>
+                <p className="follow">over it
+                <i className="material-icons">done</i>
+                </p>
+              </div>
               :
-              <p className="follow">add
-              <i className="material-icons" onClick={() => this.addFollow(brand)}>add</i>
-              </p>
+              <div onClick={() => this.addFollow(brand)}>
+                <p className="follow">add to rotation
+                  <i className="material-icons">add</i>
+                </p>
+              </div>
             }
             <h5 className="modal-title">
               {brand.name.toUpperCase()}
@@ -65,7 +62,16 @@ class BrandDetail extends Component {
               }
           </div>
           <div className="modal-body">
-            Latest Collabs:
+            {
+              this.props.collectionNames.length >= 1 ?
+              <div>
+                Latest Collabs: &nbsp;
+              </div>
+              :
+              <div>
+                No collabs as of now ...
+              </div>
+            }
             <div>
               {
                 this.props.collectionNames && this.props.collectionNames.map((name, i) => (<div key={i}>{name}</div>))

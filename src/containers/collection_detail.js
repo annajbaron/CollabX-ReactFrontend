@@ -35,7 +35,7 @@ class CollectionDetail extends Component {
     const { collection, likedCollections } = this.props;
     if (!this.props.collection) {
       return(
-        <div></div>
+        null
       )
     }
     const targetLike = likedCollections.find(function(like) {
@@ -45,15 +45,17 @@ class CollectionDetail extends Component {
         <div className="modal-content collection-modal">
           <div className="modal-header">
             { likedCollections.map(like => like.collection_id).includes(collection.id) ?
-              <i className="material-icons follow"
-                onClick={() => this.removeLike(targetLike)}
-                >bookmark
-              </i>
+              <div onClick={() => this.removeLike(targetLike)}>
+                <i className="material-icons follow"
+                  >bookmark
+                </i>
+              </div>
               :
-              <i className="material-icons follow"
-                onClick={() => this.addLike(collection)}
-                >bookmark_border
-              </i>
+              <div onClick={() => this.addLike(collection)}>
+                <i className="material-icons follow"
+                  >bookmark_border
+                </i>
+              </div>
             }
             <h5 className="modal-title">
               {this.props.collection.name}
