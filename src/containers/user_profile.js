@@ -7,35 +7,28 @@ import WrappedContainer from './map';
 
 class UserProfile extends Component {
 
-  // renderList() {
-  //   return this.props.collections.map((collection) => {
-  //     return (
-  //       <li
-  //         key={collection.name}
-  //         className="list-group-item"
-  //         >
-  //           {collection.name}
-  //         </li>
-  //     );
-  //   });
-  // }
-
   render() {
     const {user, followedBrands} = this.props;
     return(
       <div className="user-profile">
         <h1 className="page-header">PROFILE</h1>
-        { followedBrands.map((follow) => {
-          return (
-            <li
-              key={follow.brand.name}
-              className="list-group-item"
-              >
-                {follow.brand.name}
-              </li>
+        <div className="followed-brand-list">
+          { followedBrands.map((follow) => {
+            return (
+              <div
+                key={follow.brand.name}
+                className="followed-brand-item"
+                style={{
+                  background: `url(https://s3.amazonaws.com/collab-x-pictures/${follow.brand.name.replace( /\s/g, "").toLowerCase()}) center`,
+                  backgroundSize: 'cover',
+                  width: '10vw',
+                  height: '10vw'
+                }}
+              />
             )
-          })
-        }
+            })
+          }
+        </div>
         <h5 className="map-title">Visit your brands below:</h5>
       <WrappedContainer />
       </div>
