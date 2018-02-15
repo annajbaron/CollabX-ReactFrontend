@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Pitch} from '../requests/pitches';
+import {Vote} from '../requests/votes';
 
 
 class PitchPage extends Component {
@@ -40,7 +41,9 @@ class PitchPage extends Component {
         brand_1: "", brand_2: ""
       })
       this.setState(newState);
-    }
+  }
+
+
 
   renderList() {
     return this.props.pitches.map((pitch) => {
@@ -49,7 +52,13 @@ class PitchPage extends Component {
           key={pitch.id}
           className="pitch-sneak-peak"
           >
-            {pitch.brand_1} X {pitch.brand_2}
+          <div>
+            {pitch.brand_1} <img className="pitch-connector" src="https://s3.amazonaws.com/collab-x-pictures/favicon" /> {pitch.brand_2}
+          </div>
+          <div>
+            <i className="material-icons">expand_more</i>
+            <i className="material-icons">expand_less</i>
+          </div>
             <br />
             <hr />
         </div>
@@ -62,9 +71,13 @@ class PitchPage extends Component {
     return(
       <div className="page">
         <h1 className="page-header">PITCH a COLLAB</h1>
-        <div className="pitch-list">
-          <hr />
-          {this.renderList()}
+        <div className="pitch-content">
+          <div className="pitch-list">
+            {this.renderList()}
+          </div>
+          <div>
+            <img className="pitch-picture" src="https://s3.amazonaws.com/collab-x-pictures/virgilnike" />
+          </div>
         </div>
         <form>
           <div className="form-group row">

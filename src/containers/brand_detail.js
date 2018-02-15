@@ -40,7 +40,7 @@ class BrandDetail extends Component {
             { followedBrands.map(follow => follow.brand_id).includes(brand.id) ?
               <div onClick={() => this.removeFollow(targetFollow)}>
                 <p className="follow">over it
-                <i className="material-icons">done</i>
+                <i className="material-icons">clear</i>
                 </p>
               </div>
               :

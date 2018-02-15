@@ -8,6 +8,7 @@ import CollectionReducer from './reducer_collections';
 import LikedCollectionReducer from './reducer_liked_collections';
 import ActiveCollectionReducer from './reducer_active_collection';
 import PitchesReducer from './reducer_pitches';
+import VotedPitchesReducer from './reducer_voted_pitches';
 
 const rootReducer = combineReducers({
   site: SiteReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   collections: CollectionReducer,
   likedCollections: LikedCollectionReducer,
   activeCollection: ActiveCollectionReducer,
-  pitches: PitchesReducer
+  pitches: PitchesReducer,
+  votedPitches: VotedPitchesReducer
 });
 
 export default rootReducer;

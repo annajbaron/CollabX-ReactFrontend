@@ -6,6 +6,7 @@ import jwtDecode from 'jwt-decode';
 import {Token} from '../requests/tokens';
 import {Follow} from '../requests/follows';
 import {Like} from '../requests/likes';
+import {Vote} from '../requests/votes';
 
 class SignIn extends Component {
   constructor(props) {
@@ -51,7 +52,13 @@ class SignIn extends Component {
   loadLikes() {
     Like
       .all()
-      .then(this.props.setLikedCollections);
+      .then(this.props.setLikedCollections, this.loadVotes);
+  }
+
+  loadVotes() {
+    Vote
+      .all()
+      .then(this.props.setVotedPitches);
       this.props.history.push('/');
   }
 

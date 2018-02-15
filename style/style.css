@@ -283,6 +283,32 @@ button:focus {
 }
 
 .pitch-sneak-peak {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.pitch-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.pitch-connector {
+  width: 12px;
+}
+
+.pitch-content {
+  margin: 20px 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pitch-picture {
+  width: 30vw;
 }
 
 .no-content {

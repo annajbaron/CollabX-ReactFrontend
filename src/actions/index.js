@@ -55,3 +55,12 @@ createAction(Types.ADD_PITCH, { payload })
 
 export const exitCollection = payload =>
 createAction(Types.EXIT_COLLECTION, { payload })
+
+export const addVotedPitches = payload =>
+createAction(Types.ADD_VOTED_PITCHES, { payload })
+
+export const removeVotedPitches = payload =>
+createAction(Types.REMOVE_VOTED_PITCHES, { payload })
+
+export const setVotedPitches = payload =>
+createAction(Types.SET_VOTED_PITCHES, { payload })
