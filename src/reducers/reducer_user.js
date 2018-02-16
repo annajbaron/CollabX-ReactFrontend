@@ -1,8 +1,10 @@
 export default function (state = null, action) {
   switch(action.type) {
-    case 'BRAND_SELECTED':
+    case 'ATTACH_USER':
       return action.payload;
-    case 'EXIT_BRAND':
+    case 'CREATE_USER':
+      return action.payload;
+    case 'DETACH_USER':
       return null;
   }
   return state;
