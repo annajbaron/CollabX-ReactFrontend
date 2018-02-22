@@ -46,6 +46,8 @@ class PitchPage extends Component {
 
 
   renderList() {
+    const {votedPitches} = this.props;
+    console.log(votedPitches);
     return this.props.pitches.map((pitch) => {
       return (
         <div
@@ -56,8 +58,29 @@ class PitchPage extends Component {
             {pitch.brand_1} <img className="pitch-connector" src="https://s3.amazonaws.com/collab-x-pictures/favicon" /> {pitch.brand_2}
           </div>
           <div>
-            <i className="material-icons">expand_more</i>
-            <i className="material-icons">expand_less</i>
+            {
+              votedPitches.map(vote => vote.pitch_id).includes(pitch.id)?
+              <div>
+                {
+                  vote.is_up ?
+                  [
+                    <i className="material-icons" onClick={() => this.removeVote(vote)} color='#ff0000'>keyboard_arrow_up</i>,
+                    <i className="material-icons" onClick={() => this.updateVote(vote, {is_up:false})} color='#ff0000'>keyboard_arrow_down</i>
+                  ]
+                  :
+                  [
+                    <i className="material-icons" onClick={() => this.updateVote(pitch, {is_up: true})}>keyboard_arrow_up</i>,
+                    <i className="material-icons" onClick={() => this.removeVote(pitch)}>keyboard_arrow_down</i>
+                  ]
+                }
+              </div>
+              :
+              [
+                <i className="material-icons" onClick={() => this.addVote(pitch, {is_up: true})}>keyboard_arrow_up</i>,
+                <i className="material-icons" onClick={() => this.addVote(pitch, {is_up: false})}>keyboard_arrow_down</i>
+              ]
+
+            }
           </div>
             <br />
             <hr />
@@ -123,7 +146,8 @@ class PitchPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    pitches: state.pitches
+    pitches: state.pitches,
+    votedPitches: state.votedPitches
   };
 }
 
