@@ -22,17 +22,17 @@ export const Vote = {
     )
       .then(res => res.json())
   },
-  create (pitch, params) {
+  create (params) {
     const {id} = getUser()
     return fetch(
-      `${BASE_URL}/pitches/${pitch.id}/votes`,
+      `${BASE_URL}/pitches/${params.pitch_id}/votes`,
       {
         method: 'POST',
         headers: {
           'Authorization': getJwt(),
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id: id, params })
+        body: JSON.stringify({user_id: id, pitch_id: params.pitch_id, is_up: params.is_up})
       }
     )
     .then(res => res.json())
@@ -47,14 +47,14 @@ export const Vote = {
           'Authorization': getJwt(),
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id: id, params })
+        body: JSON.stringify({ id: id, pitch_id: params.pitch_id, is_up: params.is_up })
       }
     )
     .then(res => res.json())
   },
   destroy (voteId) {
     return fetch(
-      `${BASE_URL}/votes/${voteId.id}`,
+      `${BASE_URL}/votes/${voteId}`,
       {
         method: 'DELETE',
         headers: {
