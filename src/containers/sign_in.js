@@ -38,30 +38,9 @@ class SignIn extends Component {
           const newState = Object.assign({}, this.state, {
             email: "", password: "",
           });
-          this.setState(newState, this.loadProfile());
+          this.setState(newState);
         }
       });
-  }
-
-  loadProfile() {
-    console.log('load profile triggered');
-    Follow
-      .all()
-      .then(this.props.setFollowedBrands, this.loadLikes());
-  }
-
-  loadLikes() {
-    console.log('load votes triggered');
-    Like
-      .all()
-      .then(this.props.setLikedCollections, this.loadVotes());
-  }
-
-  loadVotes() {
-    console.log('load votes triggered');
-    Vote
-      .all()
-      .then(this.props.setVotedPitches);
   }
 
   render() {
@@ -118,10 +97,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    attachUser: user => dispatch(actions.attachUser(user)),
-    setFollowedBrands: following => dispatch(actions.setFollowedBrands(following)),
-    setLikedCollections: liked => dispatch(actions.setLikedCollections(liked)),
-    setVotedPitches: voted => dispatch(actions.setVotedPitches(voted))
+    attachUser: user => dispatch(actions.attachUser(user))
   }
 }
 
