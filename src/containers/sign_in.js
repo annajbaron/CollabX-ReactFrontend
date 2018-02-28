@@ -44,22 +44,24 @@ class SignIn extends Component {
   }
 
   loadProfile() {
+    console.log('load profile triggered');
     Follow
       .all()
       .then(this.props.setFollowedBrands, this.loadLikes());
   }
 
   loadLikes() {
+    console.log('load votes triggered');
     Like
       .all()
-      .then(this.props.setLikedCollections, this.loadVotes);
+      .then(this.props.setLikedCollections, this.loadVotes());
   }
 
   loadVotes() {
+    console.log('load votes triggered');
     Vote
       .all()
       .then(this.props.setVotedPitches);
-      this.props.history.push('/');
   }
 
   render() {
@@ -118,7 +120,8 @@ function mapDispatchToProps(dispatch) {
   return {
     attachUser: user => dispatch(actions.attachUser(user)),
     setFollowedBrands: following => dispatch(actions.setFollowedBrands(following)),
-    setLikedCollections: liked => dispatch(actions.setLikedCollections(liked))
+    setLikedCollections: liked => dispatch(actions.setLikedCollections(liked)),
+    setVotedPitches: voted => dispatch(actions.setVotedPitches(voted))
   }
 }
 

@@ -70,7 +70,6 @@ body {
 }
 
 .welcome {
-  background-color: ;
   position: absolute;
   top: 0;
   left: 0;
@@ -94,6 +93,7 @@ body {
   height: 100%;
   position: absolute;
   left: 0;
+  transition: all 2s;
 }
 
 .img-right {
@@ -241,18 +241,20 @@ body {
 
 .modal-content {
   border-radius: 0;
+  padding: 5px 15px;
   position: fixed;
   width: 60vw;
   left: 20vw;
   max-height: 50vh;
   top: 35vh;
   opacity: 0.98;
+  transition: all 3s;
 }
 
 .modal-body, .modal-footer {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   overflow: scroll;
 }
 

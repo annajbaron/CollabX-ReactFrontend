@@ -14,7 +14,7 @@ class Welcome extends Component {
       return(
         <div>
           { site ? (
-            <div></div>
+            <div className="welcome"></div>
           ) : (
             <div className="welcome">
               <div className="welcome-left">
