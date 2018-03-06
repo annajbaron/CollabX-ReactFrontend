@@ -10,7 +10,3 @@ npm-debug.log
 /dist
 
 config.js
-
-package.json
-package-lock.json
-webpack.config.js

@@ -43,6 +43,22 @@ class SignIn extends Component {
       });
   }
 
+  guestUser() {
+    const guestEmail = "guest@example.com";
+    const guestPassword = "hello";
+    Token
+      .create({email: guestEmail, password: guestPassword})
+      .then(data => {
+        if (!data.error) {
+          let {jwt} = data;
+          localStorage.setItem('jwt', jwt);
+          jwt = localStorage.getItem('jwt');
+          const payload = jwtDecode(jwt);
+          this.props.attachUser(payload);
+        }
+      });
+  }
+
   render() {
     return(
       <div className="sign-in">
@@ -80,6 +96,17 @@ class SignIn extends Component {
                 onClick={()=>this.createToken()}
               >
                 SUBMIT
+              </button>
+            </div>
+          </div>
+          <div className="form-group row">
+            <div className="col-sm-12">
+              <button
+                type="button"
+                className="center-block btn-sign"
+                onClick={()=>this.guestUser()}
+              >
+                SIGN IN AS GUEST
               </button>
             </div>
           </div>

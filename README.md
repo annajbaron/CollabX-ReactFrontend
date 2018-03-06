@@ -1,25 +1,32 @@
-# ReduxSimpleStarter
+# CollabX
+A web application for streetwear enthusiasts to keep up with the latest brand collaborations. Users are able to save and follow past as well as upcoming collections and interact with their favourite brands by pitching collaborations they wish to see.
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+![CollabX Home Page](https://s3.amazonaws.com/collab-x-pictures/collabx-homepage)
+
+To see the deployed site click [here](http://collabx.ca)!
 
 ### Getting Started
 
-There are two methods for getting started with this repo.
-
-#### Familiar with Git?
-Checkout this repo, install dependencies, then start the gulp process with the following:
-
+Run the following command in your terminal:
 ```
-> git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
-> cd ReduxSimpleStarter
+> git clone https://github.com/annajbaron/CollabX-ReactFrontend.git
+> cd collab-x-react-redux
 > npm install
 > npm start
+
+> git clone https://github.com/annajbaron/CollabX-RailsAPI.git
+> cd collab-x-api
+> rails start
+
+Open on http://localhost:8080/
 ```
 
-#### Not Familiar with Git?
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
+### API
+for more information on the API being used, go to: https://github.com/annajbaron/CollabX-RailsAPI
 
-```
-> npm install
-> npm start
-```
+## Technologies used:
+- React with Redux
+- Ruby on Rails (API)
+- Javascript
+- PostgreSQL
+- Bootstrap
