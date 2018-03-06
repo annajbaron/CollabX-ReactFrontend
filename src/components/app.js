@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {Follow} from '../requests/follows';
+import {Like} from '../requests/likes';
+import {Vote} from '../requests/votes';
 import AuthRoute from '../containers/auth_route';
 import AntiAuthRoute from '../containers/anti_auth_route';
 import UserProfile from '../containers/user_profile';
@@ -32,6 +34,12 @@ componentDidMount() {
     Follow
       .all()
       .then(this.props.setFollowedBrands);
+    Like
+      .all()
+      .then(this.props.setLikedCollections);
+    Vote
+      .all()
+      .then(this.props.setVotedPitches);
   } else {
     console.log('No User');
   }
@@ -117,7 +125,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     attachUser: user => dispatch(actions.attachUser(user)),
-    setFollowedBrands: following => dispatch(actions.setFollowedBrands(following))
+    setFollowedBrands: following => dispatch(actions.setFollowedBrands(following)),
+    setLikedCollections: liked => dispatch(actions.setLikedCollections(liked)),
+    setVotedPitches: voted => dispatch(actions.setVotedPitches(voted))
   }
 }
 

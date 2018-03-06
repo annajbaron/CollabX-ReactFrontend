@@ -38,30 +38,25 @@ class SignIn extends Component {
           const newState = Object.assign({}, this.state, {
             email: "", password: "",
           });
-          this.setState(newState, this.loadProfile());
+          this.setState(newState);
         }
       });
   }
 
-  loadProfile() {
-    console.log('load profile triggered');
-    Follow
-      .all()
-      .then(this.props.setFollowedBrands, this.loadLikes());
-  }
-
-  loadLikes() {
-    console.log('load votes triggered');
-    Like
-      .all()
-      .then(this.props.setLikedCollections, this.loadVotes());
-  }
-
-  loadVotes() {
-    console.log('load votes triggered');
-    Vote
-      .all()
-      .then(this.props.setVotedPitches);
+  guestUser() {
+    const guestEmail = "guest@example.com";
+    const guestPassword = "hello";
+    Token
+      .create({email: guestEmail, password: guestPassword})
+      .then(data => {
+        if (!data.error) {
+          let {jwt} = data;
+          localStorage.setItem('jwt', jwt);
+          jwt = localStorage.getItem('jwt');
+          const payload = jwtDecode(jwt);
+          this.props.attachUser(payload);
+        }
+      });
   }
 
   render() {
@@ -104,6 +99,17 @@ class SignIn extends Component {
               </button>
             </div>
           </div>
+          <div className="form-group row">
+            <div className="col-sm-12">
+              <button
+                type="button"
+                className="center-block btn-sign"
+                onClick={()=>this.guestUser()}
+              >
+                SIGN IN AS GUEST
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     )
@@ -118,10 +124,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    attachUser: user => dispatch(actions.attachUser(user)),
-    setFollowedBrands: following => dispatch(actions.setFollowedBrands(following)),
-    setLikedCollections: liked => dispatch(actions.setLikedCollections(liked)),
-    setVotedPitches: voted => dispatch(actions.setVotedPitches(voted))
+    attachUser: user => dispatch(actions.attachUser(user))
   }
 }
 

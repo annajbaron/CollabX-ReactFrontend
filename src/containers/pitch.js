@@ -59,6 +59,14 @@ class PitchPage extends Component {
       })
   }
 
+  updateVote(params) {
+    Vote
+      .update(params)
+      .then((res) => {
+
+      })
+  }
+
 
   renderList() {
     const {votedPitches} = this.props;
@@ -173,7 +181,8 @@ function mapDispatchToProps(dispatch) {
     getPitches: pitches => dispatch(actions.getPitches(pitches)),
     addPitch: pitch => dispatch(actions.addPitch(pitch)),
     addVotedPitches: vote => dispatch(actions.addVotedPitches(vote)),
-    removeVotedPitches: vote => dispatch(actions.removeVotedPitches(vote))
+    removeVotedPitches: vote => dispatch(actions.removeVotedPitches(vote)),
+    setVotedPitches: votes => dispatch(actions.setVotedPitches(votes))
 
   }
 }
