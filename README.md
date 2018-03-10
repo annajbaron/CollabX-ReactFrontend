@@ -16,6 +16,10 @@ Run the following command in your terminal:
 
 > git clone https://github.com/annajbaron/CollabX-RailsAPI.git
 > cd collab-x-api
+> bundle
+> rails db:create
+> rails db:migrate
+> rails db:seed
 > rails start
 
 Open on http://localhost:8080/
