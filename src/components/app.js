@@ -71,8 +71,16 @@ isAuth () {
                 <CollectionPage />
               </div>
             </Route> */}
-            <Route path="/sign_up">
-              <div><SignUp /></div>
+            <Route
+              path="/sign_up"
+              render={props => {
+                return <AntiAuthRoute
+                        isAuthenticated={!this.isAuth()}
+                        path='/sign_up'
+                        component={SignUp}
+                      />
+              }}
+            >
             </Route>
             <Route
               path="/sign_in"
