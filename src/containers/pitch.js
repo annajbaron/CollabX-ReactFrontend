@@ -87,15 +87,15 @@ class PitchPage extends Component {
                 {
                   vote.is_up == true ?
                   [
-                    <i className="material-icons" onClick={() => this.removeVote(vote.id)} color='#ff0000'>keyboard_arrow_up</i>,
+                    <i className="material-icons vote" onClick={() => this.removeVote(vote.id)}>keyboard_arrow_up</i>,
                     <div>vote is up</div>,
-                    <i className="material-icons" onClick={() => this.updateVote({id: vote.id, is_up: false})} color='#ff0000'>keyboard_arrow_down</i>
+                    <i className="material-icons" onClick={() => this.updateVote({pitch_id: vote.pitch_id, id: vote.id, is_up: false})}>keyboard_arrow_down</i>
                   ]
                   :
                   [
-                    <i className="material-icons" onClick={() => this.updateVote({id: vote.id, is_up: true})}>keyboard_arrow_up</i>,
+                    <i className="material-icons" onClick={() => this.updateVote({pitch_id: vote.pitch_id, id: vote.id, is_up: true})}>keyboard_arrow_up</i>,
                     <div>vote is down</div>,
-                    <i className="material-icons" onClick={() => this.removeVote(vote.id)}>keyboard_arrow_down</i>
+                    <i className="material-icons vote" onClick={() => this.removeVote(vote.id)}>keyboard_arrow_down</i>
                   ]
                 }
               </div>
