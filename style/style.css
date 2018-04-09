@@ -313,6 +313,10 @@ button:focus {
   width: 30vw;
 }
 
+i.vote {
+  color: blue;
+}
+
 .no-content {
   margin: 0 auto;
   text-align: center;

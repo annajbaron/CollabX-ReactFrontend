@@ -40,14 +40,14 @@ export const Vote = {
   update (params) {
     const {id} = getUser()
     return fetch(
-      `${BASE_URL}/votes/${params.id}`,
+      `${BASE_URL}/pitches/${params.pitch_id}/votes/${params.id}`,
       {
         method: 'PATCH',
         headers: {
           'Authorization': getJwt(),
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id: params.id, is_up: params.is_up })
+        body: JSON.stringify({ user_id: id, pitch_id: params.pitch_id, id: params.id, is_up: params.is_up })
       }
     )
     .then(res => res.json())
